@@ -1,0 +1,85 @@
+header{
+    position: fixed;
+    
+    display: flex;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid color-mix(in oklab, var(--calcario) 10%, transparent);
+    background-color: color-mix(in oklab, var(--breu) 70%, transparent);
+    overflow: hidden;
+
+    .actions-container{
+        display: flex;
+        justify-content: end;
+        height: 100%;
+    }
+
+    nav{
+        display: flex;
+        height: 100%;
+    }
+}
+.nav-link{
+    display: flex;
+    font-size: 12px;
+    width: 70px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+
+
+    &:hover{
+        border-bottom: 1px solid var(--calcario);
+    }
+    &.active{
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid var(--absinto);
+        font-weight: 700;
+        position: relative;
+        &::after{
+            content: '';
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            background: radial-gradient(50% 44.78% at 50% 100%, rgba(221, 255, 0, 0.15) 0%, rgba(221, 255, 0, 0.00) 100%);
+        }
+    }
+}
+
+.search-input-container{
+    display: flex;
+    position: relative;
+    padding: 15px;
+
+    .search-input{
+        border-bottom: 1px solid var(--calcario);
+        &:focus{
+            border-bottom: 1px solid var(--absinto);
+            outline: none;
+            & + label{
+            font-size: 10px;
+            top: 5px;
+            left: 15px;
+            transform: translateY(0px)
+        }
+        }
+        &:not(:placeholder-shown) + label{
+            font-size: 10px;
+            top: 5px;
+            left: 15px;
+            transform: translateY(0px)
+        }
+    }
+    label{
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        cursor: text;
+        font-size: 12px;
+        transition: all ease-in .1s;
+    }
+}
