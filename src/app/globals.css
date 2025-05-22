@@ -8,7 +8,7 @@
   --absinto: #DDFF00;
   --breu: #1C1C1C;
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #1c1c1c;
   --foreground: oklch(0.147 0.004 49.25);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
@@ -39,6 +39,8 @@
   --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
+  --sombra: 0px 69px 19px 0px rgba(0, 0, 0, 0.01), 0px 44px 18px 0px rgba(0, 0, 0, 0.05), 0px 25px 15px 0px rgba(0, 0, 0, 0.18), 0px 11px 11px 0px rgba(0, 0, 0, 0.30), 0px 3px 6px 0px rgba(0, 0, 0, 0.35);
+  --glow: 0px 0px 41.7px 0px rgba(221, 255, 0, 0.27);
 }
 
 @theme inline {

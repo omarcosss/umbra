@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Wix_Madefor_Display } from "next/font/google";
+import { Geist, Geist_Mono, Wix_Madefor_Display, Spectral } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header/Header";
 
@@ -18,6 +18,12 @@ const wixDisplay = Wix_Madefor_Display({
   subsets: ["latin"]
 });
 
+const spectral = Spectral({
+  variable: "--font-spectral",
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"]
+});
+
 export const metadata: Metadata = {
   title: "Umbra",
   description: "Horror Tracker",
@@ -31,10 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${wixDisplay.variable} ${geistMono.variable} antialiased`}
+        className={`${wixDisplay.variable} ${geistMono.variable} ${spectral.variable} antialiased`}
       >
         <Header/>
-        {children}
+        <div className="pt-[70px]">
+          {children}
+        </div>
       </body>
     </html>
   );

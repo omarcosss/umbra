@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Umbra - Horror Tracker
+Bem-vindos ao repositório da interface web do Umbra, um projeto inovador de Interação Humano-Computador (IHC) que busca aprimorar a experiência de entusiastas do terror! Inspirado em plataformas como o "TvTime", o Umbra é um webapp dedicado a organizar e explorar séries e filmes focados no gênero de terror, oferecendo uma imersão profunda no universo do medo.
 
-## Getting Started
+### Sobre o Projeto
+Este projeto está sendo desenvolvido como parte da disciplina de IHC e tem como objetivo principal criar uma interface de usuário intuitiva e envolvente que atenda às necessidades de fãs de terror. Acreditamos que a forma como interagimos com o conteúdo é tão importante quanto o próprio conteúdo.
 
-First, run the development server:
+### Tecnologias Utilizadas
+A interface do Umbra está sendo construída com as seguintes tecnologias:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Next.js: Um framework React de produção para construir aplicações web rápidas e escaláveis, ideal para o nosso front-end.
+React: A biblioteca JavaScript para construir interfaces de usuário, garantindo componentes interativos e eficientes.
+Tailwind CSS (ou similar): Para estilização e um design responsivo e moderno (você pode substituir por Sass, Styled Components, etc., conforme a escolha da equipe).
+Outras bibliotecas a serem definidas: (Ex: Axios para requisições HTTP, bibliotecas de ícones, etc.)
+### Funcionalidades Planejadas
+Exploração de Conteúdo: Navegação fácil por séries e filmes de terror, com filtros por subgênero, ano de lançamento, etc.
+Perfis de Usuário: Acompanhamento do progresso em séries, lista de filmes assistidos e desejados.
+Descoberta Personalizada: Sugestões de conteúdo baseadas no histórico e preferências do usuário.
+Interação Social: (Opcional, mas interessante para IHC) Avaliação e comentários sobre títulos.
+### Como Executar o Projeto
+Para configurar e rodar o Umbra localmente, siga os passos abaixo:
+
+Clone o repositório:
+```Bash
+git clone https://github.com/SeuUsuario/Umbra.git 
 ```
+Navegue até o diretório do projeto:
+```Bash
+cd Umbra
+```
+Instale as dependências:
+```Bash
+npm install
+# ou
+yarn install
+```
+Inicie o servidor de desenvolvimento:
+```Bash
+npm run dev
+# ou
+yarn dev
+```
+O webapp estará disponível em http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Equipe
+Alysson
+David
+Geovane
+Marcos
+Stefano
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Estamos animados para construir o Umbra e proporcionar uma experiência aterrorizante (no bom sentido!) para os amantes do terror.
