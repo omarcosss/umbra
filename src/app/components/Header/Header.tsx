@@ -123,23 +123,25 @@ export default function Header(){
   const pathname = usePathname();
   return(
     <header>
-      <div className="logo-container">
-        <Link href={"/"}>
-          <Image src="/logo.png" alt="" width={201.5} height={125} />
-        </Link>
-      </div>
-      <div className="actions-container">
+      <div className="container">
+        <div className="logo-container">
+          <Link href={"/"}>
+            <Image src="/logo.png" alt="" width={201.5} height={125} />
+          </Link>
+        </div>
         <SearchInput />
-        <nav>
-          <NavLink href="/" label="Início" isActive={pathname === '/' ? true : false} />
-          <NavLink href="/series" label="Séries" isActive={pathname === '/series' ? true : false}/>
-          <NavLink href="/filmes" label="Filmes" isActive={pathname === '/filmes' ? true : false}/>
-          <NavLink href="/explorar" label="Explorar" isActive={pathname === '/explorar' ? true : false}/>
-          
-        </nav>
-        <LogButton />
-        <NotificationsButton />
-        <UserButton />
+        <div className="actions-container">
+          <nav>
+            <NavLink href="/" label="Início" isActive={pathname === '/' ? true : false} />
+            <NavLink href="/series" label="Séries" isActive={pathname === '/series' ? true : false}/>
+            <NavLink href="/filmes" label="Filmes" isActive={pathname === '/filmes' ? true : false}/>
+            <NavLink href="/explorar" label="Explorar" isActive={pathname === '/explorar' ? true : false}/>
+            
+          </nav>
+          <LogButton />
+          <NotificationsButton />
+          <UserButton />
+        </div>
       </div>
     </header>
     

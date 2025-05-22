@@ -8,6 +8,14 @@ header{
     justify-content: center;
     border-bottom: 1px solid color-mix(in oklab, var(--calcario) 10%, transparent);
     background-color: color-mix(in oklab, var(--breu) 70%, transparent);
+    .container{
+        display: flex;
+        height: 100%;
+        width: 100%;
+        max-width: 1200px;
+        justify-content: space-between;
+        align-items: center;
+    }
     .logo-container{
         overflow-y:hidden;
     }
@@ -16,6 +24,7 @@ header{
         display: flex;
         justify-content: end;
         height: 100%;
+        gap: 20px;
     }
 
     img{
