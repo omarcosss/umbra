@@ -6,7 +6,8 @@ import Link from "next/link";
 import { BellSimpleIcon, CaretDownIcon, EyeIcon, UserCircleIcon, IconWeight } from "@phosphor-icons/react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-
+import Modal from "../Dialogs/Modal";
+import Input from "../Input/Input";
 
 function SearchInput(){
     return(
@@ -71,19 +72,56 @@ interface NotificationsMenuProps{
   isOpen: boolean;
 }
 
+const Notification = ({icon, text, date}: {icon: string, text: string, date: string}) => {
+  return (
+    <div className="notification">
+      <img className="notification-icon" src={icon} alt="Notification Icon" />
+      <div className="notification-content">
+        <div className="notification-content-text">{text}</div>
+        <div className="notification-content-date">{date}</div>
+      </div>
+    </div>
+  );
+}
+
 const NotificationsMenu = ({isOpen}: NotificationsMenuProps) => {
   return(
     <div className={"notifications-menu" + (isOpen ? ' open' : '')}>
       <span>Notificações</span>
-      <div className="notification">
-        <img className="notification-icon" src="https://picsum.photos/200" />
-        <div className="notification-content">
-          <div className="notification-content-text">
-            User123 quer seguir você no Umbra
-          </div>
-          <div className="notification-content-date">23 dez. 2025</div>
-        </div>
-      </div>
+      <Notification 
+        icon="https://picsum.photos/id/616/300/300" 
+        text="Você tem um novo seguidor!" 
+        date="Hoje às 14:30"
+      />
+      <Notification
+        icon="https://picsum.photos/id/666/300/300"
+        text="Seu amigo @terror_fanatic acabou de assistir 'A Bruxa' e deu 5 estrelas!"
+        date="Hoje às 21:00"
+      />
+
+      <Notification
+        icon="https://picsum.photos/id/13/300/300"
+        text="Alguém comentou na sua análise de 'Pânico'!"
+        date="Hoje às 19:45"
+      />
+
+      <Notification
+        icon="https://picsum.photos/id/888/300/300"
+        text="'Halloween Ends' acabou de ser adicionado à sua lista de observação!"
+        date="Ontem às 18:00"
+      />
+
+      <Notification
+        icon="https://picsum.photos/id/999/300/300"
+        text="O usuário @filmes_assustadores começou a te seguir!"
+        date="Ontem às 15:30"
+      />
+
+      <Notification
+        icon="https://picsum.photos/id/777/300/300"
+        text="Uma nova lista de 'Os 10 Filmes de Terror Mais Perturbadores' foi criada por @mestre_do_horror!"
+        date="5 de Junho às 11:00"
+      />
     </div>
   );
 }
@@ -109,10 +147,13 @@ const NotificationsButton = () => {
   );
 }
 
-const LogButton = () => {
+type LogButtonProps = {
+  setShowLogModal: (show: boolean) => void;
+}
+const LogButton = ({ setShowLogModal }: LogButtonProps) => {
   const [iconWeight, setIconWeight] = useState<IconWeight>('regular');
   return(
-    <button className="log-button" onMouseEnter={() => setIconWeight('fill')} onMouseLeave={() => setIconWeight('regular')}>
+    <button onClick={() => setShowLogModal(true)} className="log-button" onMouseEnter={() => setIconWeight('fill')} onMouseLeave={() => setIconWeight('regular')}>
       <EyeIcon size={15} weight={iconWeight} />
       <span>Marcar como assistido</span>
     </button>
@@ -120,6 +161,7 @@ const LogButton = () => {
 }
 
 export default function Header(){
+  const [showLogModal, setShowLogModal] = useState(false);
   const pathname = usePathname();
   return(
     <header>
@@ -138,11 +180,21 @@ export default function Header(){
             <NavLink href="/explorar" label="Explorar" isActive={pathname === '/explorar' ? true : false}/>
             
           </nav>
-          <LogButton />
+          <LogButton setShowLogModal={setShowLogModal} />
           <NotificationsButton />
           <UserButton />
         </div>
       </div>
+      <Modal
+        isOpen={showLogModal}
+        onClose={() => setShowLogModal(false)}
+        title="Marcar como assistido"
+        className=""
+        overlayClassName=" "
+        disableOverlayClick
+      >
+        <Input placeholder="Digite o nome da série ou filme" type="text"/>
+      </Modal>
     </header>
     
   )
