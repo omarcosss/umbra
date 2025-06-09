@@ -63,7 +63,6 @@ const UserButton = () => {
       <UserMenu isOpen={isOpen} />
       <UserCircleIcon size={24} weight={iconWeight} />
       <CaretDownIcon size={10} weight={iconWeight} />
-
     </button>
   );
 }

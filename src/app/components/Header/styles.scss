@@ -9,6 +9,7 @@ header{
     border-bottom: 1px solid color-mix(in oklab, var(--calcario) 10%, transparent);
     background-color: color-mix(in oklab, var(--breu) 70%, transparent);
     backdrop-filter: blur(13.800000190734863px);
+    z-index: 100;
     .container{
         display: flex;
         height: 100%;

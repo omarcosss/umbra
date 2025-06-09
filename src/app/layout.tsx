@@ -26,7 +26,7 @@ const spectral = Spectral({
 });
 
 export const metadata: Metadata = {
-  title: "Umbra",
+  title: "Pavorama",
   description: "Horror Tracker",
 };
 
