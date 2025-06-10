@@ -8,6 +8,8 @@ header{
     justify-content: center;
     border-bottom: 1px solid color-mix(in oklab, var(--calcario) 10%, transparent);
     background-color: color-mix(in oklab, var(--breu) 70%, transparent);
+    backdrop-filter: blur(13.800000190734863px);
+    z-index: 100;
     .container{
         display: flex;
         height: 100%;
@@ -151,6 +153,8 @@ header{
     top: 99%;
     padding: 10px 15px;
     gap: 10px;
+    overflow-x: auto;
+    max-height: 500px;
     .notification{
         display: flex;
         padding: 5px 0px;

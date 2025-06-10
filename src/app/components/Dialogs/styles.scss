@@ -1,0 +1,37 @@
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color-mix(in oklab, var(--breu) 30%, transparent);
+    backdrop-filter: blur(8px);
+}
+
+.modal{
+    display: flex;
+    background-color: var(--breu);
+    flex-direction: column;
+    border: 1px solid var(--calcario);
+    border-radius: 5px;
+    padding: 0px 15px 10px 15px;
+    gap: 15px;
+    box-shadow: var(--sombra);  
+    &-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid color-mix(in oklab, var(--calcario) 30%, transparent);
+        &-title{
+            font-family: var(--font-spectral);
+            font-size: 16px;
+            font-weight: 700;
+        }
+        button:hover{
+            color: color-mix(in oklab, var(--calcario) 60%, transparent);
+            cursor: pointer;
+        }
+    }
+}

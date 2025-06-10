@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Wix_Madefor_Display, Spectral } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header/Header";
+import LogDialog from "./components/Dialogs/Dialog";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,7 @@ const spectral = Spectral({
 });
 
 export const metadata: Metadata = {
-  title: "Umbra",
+  title: "Pavorama",
   description: "Horror Tracker",
 };
 
@@ -40,9 +41,12 @@ export default function RootLayout({
         className={`${wixDisplay.variable} ${geistMono.variable} ${spectral.variable} antialiased`}
       >
         <Header/>
+        {/* <LogDialog /> */}
+
         <div className="pt-[70px]">
           {children}
         </div>
+        <div id="modal-root"></div>
       </body>
     </html>
   );

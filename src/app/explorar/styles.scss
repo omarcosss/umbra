@@ -1,0 +1,31 @@
+.explorar-container{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h3{
+        font-family: var(--font-spectral);
+    }
+}
+.category-button{
+    display: flex;
+    padding: 30px;
+    gap: 20px;
+    height: 105px;
+    width: 269px;
+    color: var(--calcario);
+    font-size: 16px;
+    font-weight: 500;
+    align-items: center;
+    background-color: var(--breu);
+    border: 1px solid var(--calcario);
+    border-radius: 5px;
+    box-shadow: var(--sombra);
+     z-index: 10;
+    &:hover{
+        box-shadow: var(--glow);
+        border-color: var(--absinto);
+        z-index: 90;
+    }
+}
