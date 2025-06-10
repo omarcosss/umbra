@@ -6,7 +6,6 @@ import { Tooltip } from 'primereact/tooltip';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Para o loading
 import { Knife, Ghost, Gaslight } from '../components/CustomIcons/Knife'
 import "./styles.scss";
-import { KnifeIcon } from '@phosphor-icons/react';
 
 type categoryButtonProps = {
     icon: React.ReactNode,
