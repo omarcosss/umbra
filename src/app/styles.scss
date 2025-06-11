@@ -2,12 +2,45 @@
 
 .highlights-slide {
     width: 100%;
-    height: 80vh; /* Ajuste a altura conforme necessário */
+    height: calc(80vh + 200px); /* Ajuste a altura conforme necessário */
     position: relative; /* Essencial para posicionar os elementos filhos */
     background-color: #000;
     color: white;
     overflow: hidden; /* Garante que nada saia dos cantos arredondados */
-    border-radius: 8px; /* Opcional: para cantos arredondados */
+
+}
+
+/* Full bleed */
+.p-carousel {
+    position: relative;
+    margin: -2rem calc(50% - 50vw) 0;
+
+    .p-carousel-next {
+        position: absolute;
+        // top: 50%;
+        right: 0;
+        z-index: 90;
+    }
+    .p-carousel-prev {
+        position: absolute;
+        left: 0;
+        z-index: 90;
+    }
+
+    &::after {
+        position: absolute;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 400px;
+        width: 100%;
+        background: linear-gradient(to bottom, transparent 0%, var(--breu) 80%, var(--breu) 100%);
+    }
+}
+
+.post-carousel {
+    margin-top: -200px;
+    z-index: 90;
 }
 
 /* A NOVA CLASSE PARA A IMAGEM 👇 */
@@ -64,7 +97,7 @@
 .highlights-content {
     position: relative; /* Para ficar acima do overlay */
     z-index: 3;
-    height: 100%;
+    height: calc(100% - 200px);
     display: flex;
     flex-direction: column;
     justify-content: center;
