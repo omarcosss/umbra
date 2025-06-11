@@ -1,9 +1,10 @@
 "use client"
 
+import React from "react";
 import Image from "next/image";
 import "./styles.scss";
 import Link from "next/link";
-import { BellSimpleIcon, CaretDownIcon, EyeIcon, UserCircleIcon, IconWeight } from "@phosphor-icons/react";
+import { BellSimpleIcon, CaretDownIcon, EyeIcon, UserCircleIcon, MagnifyingGlassIcon, IconWeight } from "@phosphor-icons/react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Modal from "../Dialogs/Modal";
@@ -44,6 +45,28 @@ const UserMenu = ({isOpen}: UserMenuProps) => {
       <Link href={"/configurações"}>Configurações</Link>
       <Link href={"/login"}>Sair</Link>
     </div>
+  );
+}
+
+type MobileSearchButtonProps = {
+  searchIsOpen: boolean;
+  setSearchIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const MobileSearchButton = ({searchIsOpen, setSearchIsOpen}: MobileSearchButtonProps) => {
+  const [iconWeight, setIconWeight] = useState<IconWeight>('regular');
+  const toggleMobileSearch = () => {
+    setSearchIsOpen(!searchIsOpen);
+  }
+  return(
+    <button 
+      className="search-menu-button"
+      onMouseEnter={() => setIconWeight('bold')}
+      onClick={toggleMobileSearch}
+    >
+      <MagnifyingGlassIcon size={24} weight={iconWeight} />
+      <CaretDownIcon size={10} weight={iconWeight} />
+    </button>
   );
 }
 
@@ -161,16 +184,17 @@ const LogButton = ({ setShowLogModal }: LogButtonProps) => {
 
 export default function Header(){
   const [showLogModal, setShowLogModal] = useState(false);
+  const [searchIsOpen, setSearchIsOpen] = useState(false);
   const pathname = usePathname();
   return(
     <header>
       <div className="container">
-        <div className="logo-container">
+        <div className={`logo-container${searchIsOpen ? " show-search" : ""}`}>
           <Link href={"/"}>
-            <Image src="/logo.png" alt="" width={201.5} height={125} />
+            <Image src="/logo.png" alt="" width={201.5} height={125} priority={true} />
           </Link>
+          <SearchInput />
         </div>
-        <SearchInput />
         <div className="actions-container">
           <nav>
             <NavLink href="/" label="Início" isActive={pathname === '/' ? true : false} />
@@ -180,8 +204,11 @@ export default function Header(){
             
           </nav>
           <LogButton setShowLogModal={setShowLogModal} />
-          <NotificationsButton />
-          <UserButton />
+          <div className="user-container">
+            <MobileSearchButton searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
+            <NotificationsButton />
+            <UserButton />
+          </div>
         </div>
       </div>
       <Modal
