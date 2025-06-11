@@ -81,6 +81,55 @@ section.profile-header {
     }
 }
 
+h3 {
+    font-size: 1.5rem;
+    
+    span {
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+}
+
+div.user-review {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    gap: 1rem;
+
+    .mb-4 {
+        margin-bottom: unset;
+    }
+
+    .user-review-info {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .review-date {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        display: flex;
+        justify-content: end;
+        gap: 0.5rem;
+    }
+
+    .review-interactions {
+        display: flex;
+        gap: 1.5rem;
+        height: 100%;
+        align-items: end;
+
+        span {
+            display: flex;
+            gap: 0.5rem
+        }
+    }
+}
+
 @media (max-width: 768px) {
     section.profile-header {
         display: flex;
@@ -138,4 +187,17 @@ section.profile-header {
             font-weight: 800;
         }
     }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    div.user-review {
+        padding-top: 2rem;
+
+        .review-date {
+            top: -2rem;
+        }
+    }
+
 }
