@@ -18,11 +18,13 @@
 @media (max-width: 768px) {
     .page-container{
         padding: 1rem;
-        padding-top: calc(70px + 2rem);
-        max-width: calc(100vw - 2rem);
+        padding-top: calc(60px + 1rem);
+        padding-bottom: calc(60px + 1rem);
+        max-width: unset;
+        width: 100%;
         margin: unset;
         
-        gap: 20px;
+        gap: 10px;
         h3{
             font-family: var(--font-spectral);
         }
