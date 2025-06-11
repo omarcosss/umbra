@@ -33,6 +33,7 @@ const spectral = Spectral({
 const tradeWinds = Trade_Winds({
   variable: "--font-winds",
   weight: "400",
+  subsets: ["latin"]
   
 })
 
