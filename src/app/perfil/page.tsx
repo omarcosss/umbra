@@ -34,7 +34,7 @@ export default function Perfil(){
                 { label: "Fulana de Town", route: "/perfil" },
             ]} />
             <ProfilePageHeader />
-            <TabsSection tabs={[
+            <TabsSection alignment='center' tabs={[
                 {label: "Estatísticas", content: <SectionStatistics/>},
                 {label: "Listas", content: <SectionLists/>},
                 {label: "Comentários", content: <SectionComments/>}
