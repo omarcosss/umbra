@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  margin: 0;
+  padding: 0;
+  /* É uma boa prática adicionar isso também para um controle de layout mais previsível */
+  box-sizing: border-box; 
+}
+
 :root {
   --calcario: #EFEADF;
   --absinto: #DDFF00;
