@@ -1,4 +1,6 @@
 .page-container{
+    --gap: 20px;
+
     display: flex;
     flex-direction: column;
 
@@ -7,7 +9,7 @@
     max-width: calc(1200px - 4rem);
     margin: auto;
     
-    gap: 20px;
+    gap: var(--gap);
     h3{
         font-family: var(--font-spectral);
     }

@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react";
-import Image from "next/image";
 import "./styles.scss";
 import Link from "next/link";
 
@@ -19,7 +18,7 @@ export default function Breadcrumbs({ routeList }: BreadcrumbsProps) {
   return(
     <nav className="breadcrumbs">
       {routeList.map((item, index) => (
-        <Link href={item.route}>
+        <Link href={item.route} key={index}>
           {item.label}
         </Link>
       ))}

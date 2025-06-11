@@ -1,0 +1,57 @@
+nav.tabs-section-nav {
+    display: flex;
+    
+    width: 100%;
+    border-bottom: #EFEADF55 2px solid;
+
+    &.start {
+        justify-content: start;
+    }
+    &.center {
+        justify-content: center;
+    }
+    &.end {
+        justify-content: end;
+    }
+
+    button {
+        padding: 1rem 3rem;
+        cursor: pointer;
+        margin-bottom: -2px;
+
+        transition: border-bottom 0.1s ease;
+
+        &.active {
+            border-bottom: var(--absinto) 2px solid;
+        }
+
+        &:not(.active):hover {
+            border-bottom: #EFEADF 2px solid;
+        }
+    }
+}
+
+div.tabs-section-container {
+    display: flex;
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: var(--gap);
+
+        max-width: 100%;
+        opacity: 1;
+        overflow-x: hidden;
+
+        transition:
+            max-width 0.3s ease
+            opacity 0.3s ease;
+
+        &:not(.active) {
+            max-width: 0px;
+            opacity: 0;
+        }
+    }
+}
