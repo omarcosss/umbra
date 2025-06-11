@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Wix_Madefor_Display, Spectral, Trade_Winds } from "next/font/google";
 import "./globals.css";
-import "./styles.scss";
+import "./layout.scss";
 import Header from "./components/Header/Header";
 // import LogDialog from "./components/Dialogs/Dialog";
 import 'primereact/resources/themes/saga-blue/theme.css'; // Choose your theme
