@@ -17,13 +17,14 @@
 
     .p-carousel-next {
         position: absolute;
-        // top: 50%;
         right: 0;
+        transform: translateY(-100px);
         z-index: 90;
     }
     .p-carousel-prev {
         position: absolute;
         left: 0;
+        transform: translateY(-100px);
         z-index: 90;
     }
 
