@@ -113,18 +113,17 @@ export default function Home() {
     
 
   return (
-    <div className="">
-      <div>
-        Carroselzao
+    <>
         <Carousel value={emAlta} numScroll={1} numVisible={1} itemTemplate={highlightsCard}
-         autoplayInterval={5000} circular/>
-      </div>
-      <div>
-        assistindo agr
-      </div>
-      <div>
-        s/assistir ha um tempo
-      </div>
-    </div>
+        autoplayInterval={5000} circular/>
+        <div className="post-carousel">
+            <div>
+                assistindo agr
+            </div>
+            <div>
+                s/assistir ha um tempo
+            </div>
+        </div>            
+    </>
   );
 }
