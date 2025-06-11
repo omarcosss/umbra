@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Wix_Madefor_Display, Spectral } from "next/font/google";
 import "./globals.css";
+import "./styles.scss";
 import Header from "./components/Header/Header";
-import LogDialog from "./components/Dialogs/Dialog";
+// import LogDialog from "./components/Dialogs/Dialog";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,7 @@ export default function RootLayout({
         <Header/>
         {/* <LogDialog /> */}
 
-        <div className="pt-[70px]">
+        <div className="page-container">
           {children}
         </div>
         <div id="modal-root"></div>
