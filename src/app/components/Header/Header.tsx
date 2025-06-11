@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react";
 import Image from "next/image";
 import "./styles.scss";
 import Link from "next/link";

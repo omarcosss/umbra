@@ -1,5 +1,6 @@
+import React from "react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Wix_Madefor_Display, Spectral, Trade_Winds } from "next/font/google";
+import { Geist_Mono, Wix_Madefor_Display, Spectral, Trade_Winds } from "next/font/google";
 import "./globals.css";
 import "./layout.scss";
 import Header from "./components/Header/Header";
@@ -7,12 +8,6 @@ import Header from "./components/Header/Header";
 import 'primereact/resources/themes/saga-blue/theme.css'; // Choose your theme
 import 'primereact/resources/primereact.min.css'; // Core CSS
 import Tooltip from "./components/Tooltip";
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
