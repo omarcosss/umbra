@@ -8,7 +8,6 @@ import Header from "./components/Header/Header";
 import 'primereact/resources/themes/saga-blue/theme.css'; // Choose your theme
 import 'primereact/resources/primereact.min.css'; // Core CSS
 import Tooltip from "./components/Tooltip";
-import { Carousel } from "primereact/carousel";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
