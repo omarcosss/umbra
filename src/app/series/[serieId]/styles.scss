@@ -1,0 +1,70 @@
+.serie-details{
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+
+    &__poster{
+        width: 40%;
+    };
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+        align-items: start;
+        justify-content: start;
+        gap: 20px;
+        width: 100%;
+
+        h1{
+            font-family: var(--font-spectral);
+            font-size: 32px;
+            font-weight: bold;
+        }
+        p{
+            font-size: 14px;
+        }
+        &__availability{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-size: 12px;
+            .streamings{
+                display: flex;
+                gap: 30;
+            }
+        }   
+    }
+    &__actions{
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 10px;
+        width: fit-content;
+        padding: 20px;
+    }
+}
+.p-tabview{
+    background-color: transparent !important;
+    &-selected{
+        .p-tabview-nav-link{
+            color: var(--calcario);
+            border-color: var(--absinto);
+        }
+    }
+}
+.p-tabview-nav{
+    background-color: transparent !important;
+}	//Container of headers.
+.p-tabview-nav-link{
+    background-color: transparent !important;
+}	//Container of headers.
+.p-tabview-selected{
+    background-color: transparent !important;
+}	//Selected tab header.
+.p-tabview-panels{
+    background-color: transparent !important;
+}	//Container panels.
+.p-tabview-panel{
+    background-color: transparent !important;
+}

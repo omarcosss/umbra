@@ -1,0 +1,142 @@
+/* Estilos para o Carrossel de Destaque (Highlights) */
+
+.highlights-slide {
+    width: 100%;
+    height: calc(80vh + 200px); /* Ajuste a altura conforme necessário */
+    position: relative; /* Essencial para posicionar os elementos filhos */
+    background-color: #000;
+    color: white;
+    overflow: hidden; /* Garante que nada saia dos cantos arredondados */
+
+}
+
+/* Full bleed */
+.p-carousel:has(.highlights-slide) {
+    position: relative;
+    margin: -2rem calc(50% - 50vw) 0;
+
+    .p-carousel-next {
+        position: absolute;
+        right: 0;
+        transform: translateY(-100px);
+        z-index: 90;
+    }
+    .p-carousel-prev {
+        position: absolute;
+        left: 0;
+        transform: translateY(-100px);
+        z-index: 90;
+    }
+
+    &::after {
+        position: absolute;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 400px;
+        width: 100%;
+        background: linear-gradient(to bottom, transparent 0%, var(--breu) 80%, var(--breu) 100%);
+    }
+}
+
+.post-carousel {
+    margin-top: -200px;
+    z-index: 90;
+}
+
+/* A NOVA CLASSE PARA A IMAGEM 👇 */
+.highlights-image-element {
+    /* 1. Posicionamento */
+    position: absolute;
+    top: 0;
+    right: 0; /* Alinha a imagem à direita do slide */
+    
+    /* 2. Dimensionamento (AQUI ESTÁ A MÁGICA) */
+    width: 65%; /* A imagem ocupará 65% da largura do slide */
+    height: 100%; /* A imagem ocupará 100% da altura do slide */
+
+    /* 3. Comportamento da Imagem */
+    object-fit: cover; /* ESSENCIAL: A imagem preenche o espaço de 65% sem esticar */
+    object-position: center 40%; /* Centraliza a imagem dentro da sua área */
+
+    /* 4. Camada */
+    z-index: 1;
+}
+.highlights-background {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 450px;
+    background-size: cover;
+    //  background-size: contain;
+    //  background-repeat: no-repeat;
+    background-position: top right;
+    z-index: 1; /* Fica no fundo */
+    transition: transform 0.6s ease-in-out; /* Efeito de zoom suave */
+    // background-position: center center;
+}
+
+/* Efeito de zoom no hover */
+.highlights-slide:hover .highlights-background {
+    transform: scale(1.05);
+}
+
+.highlights-overlay {
+    position: absolute;
+    top: 0;
+    right:0;
+    width:65%;
+    // left: 0;
+    // width: 100%;
+    height: 100%;
+    /* Gradiente: escuro na esquerda (onde o texto fica) e mais claro na direita */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.1) 90%);
+    z-index: 2; /* Fica acima do fundo, mas abaixo do texto */
+}
+
+.highlights-content {
+    position: relative; /* Para ficar acima do overlay */
+    z-index: 3;
+    height: calc(100% - 200px);
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o texto à esquerda */
+    padding: 0 5%; /* Espaçamento lateral */
+    max-width: 45%; /* Limita a largura do texto para não cobrir a imagem inteira */
+}
+
+.highlights-title {
+    font-size: 3rem; /* Tamanho grande para o título */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.highlights-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 500px; /* Limita a largura da descrição */
+}
+
+.highlights-button {
+    padding: 10px 25px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.highlights-button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Customização opcional das setas do PrimeReact */
+.p-carousel .p-carousel-indicators {
+    /* Esconde os pontinhos de navegação, se não quiser */
+    display: none; 
+}
