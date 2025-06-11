@@ -5,7 +5,7 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import TabsSection from "../components/TabsSection/TabsSection";
 import Image from "next/image";
 import "./styles.scss";
-import { UserPlusIcon, ShareNetworkIcon , IconWeight, SkullIcon, ChatIcon } from "@phosphor-icons/react";
+import { UserPlusIcon, ShareNetworkIcon, SkullIcon, ChatIcon } from "@phosphor-icons/react";
 import { Carousel } from "primereact/carousel";
 import { ProgressSpinner } from "primereact/progressspinner";
 import Link from "next/link";
@@ -52,7 +52,15 @@ const contentCard = (data: ContentCardProps) => {
     );
 };
 
-const ProfileMetrics = ({metrics}: any) => {
+type ProfileMetricsProps = {
+    metrics: {
+        following: number | string;
+        followers: number | string;
+        comments: number | string;
+    };
+};
+
+const ProfileMetrics = ({metrics}: ProfileMetricsProps) => {
     return (
         <ul className="profile-metrics">
             <li>
@@ -68,7 +76,17 @@ const ProfileMetrics = ({metrics}: any) => {
     )
 }
 
-const ProfilePageHeader = ({user}: any) => {
+type User = {
+    name: string;
+    bio: string;
+    metrics: {
+        following: number | string;
+        followers: number | string;
+        comments: number | string;
+    };
+};
+
+const ProfilePageHeader = ({user}: { user: User }) => {
     return(
         <section className="profile-header">
             <Image src="/profilepic.png" alt="" width={160} height={160} priority={true} />
@@ -86,7 +104,7 @@ const ProfilePageHeader = ({user}: any) => {
     )
 }
 
-const SectionStatistics = ({atividadeRecente}: any) => {
+const SectionStatistics = ({atividadeRecente}: { atividadeRecente: ContentCardProps[] }) => {
     return(
         <>
             <h3>Atividade Recente</h3>
@@ -95,19 +113,24 @@ const SectionStatistics = ({atividadeRecente}: any) => {
     )
 }
 
-const SectionLists = ({filmesFavoritos, seriesFavoritas}: any) => {
+type SectionListsProps = {
+    filmesFavoritos: ContentCardProps[];
+    seriesFavoritas: ContentCardProps[];
+};
+
+const SectionLists = ({filmesFavoritos, seriesFavoritas}: SectionListsProps) => {
 
     return(
         <>
-            <h3>Filmes Populares</h3>
+            <h3>Filmes Favoritos</h3>
             <Carousel value={filmesFavoritos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
-            <h3>Séries Populares</h3>
+            <h3>Séries Favoritas</h3>
             <Carousel value={seriesFavoritas} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
         </>
     )
 }
 
-const SectionComments = ({filmes}: any) => {
+const SectionComments = ({filmes}: { filmes: ContentCardProps[] }) => {
     return(
         <>
             <UserReview card={filmes[0]} reviewData={{
@@ -142,7 +165,18 @@ const SectionComments = ({filmes}: any) => {
     )
 }
 
-const UserReview = ({card, reviewData}: any) => {
+type UserReviewProps = {
+    card: ContentCardProps;
+    reviewData: {
+        date: string;
+        rating: number;
+        description: string;
+        likes: number;
+        comments: number;
+    };
+};
+
+const UserReview = ({card, reviewData}: UserReviewProps) => {
     const { id, name, image, type } = card.content;
     const url = `/${type}s/${id}`;
 
