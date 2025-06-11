@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
 import { Tooltip } from 'primereact/tooltip';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Para o loading
-import { Knife, Ghost, Gaslight } from '../components/CustomIcons/Knife'
+import { Knife, Ghost, Gaslight } from '../components/CustomIcons/Knife';
 import "./styles.scss";
+import Link from 'next/link';
 
 type categoryButtonProps = {
     icon: React.ReactNode,
@@ -31,8 +32,10 @@ export default function Explorar(){
 
     type ContentCardProps = {
         content: {
+            id: string;
             name: string;
             image: string;
+            type: 'filme' | 'serie';
         }
     };
     
@@ -65,8 +68,8 @@ export default function Explorar(){
                 const buildCategoryList = (ids: string[]): ContentCardProps[] => {
                     return ids.map(id => {
                         const item: ContentItem = data.conteudo[id];
-                        // O Carousel espera o formato { content: { name, image } }
-                        return { content: { name: item.name, image: item.image } };
+                        // O Carousel espera o formato { content: { id, name, image, type } }
+                        return { content: { id, name: item.name, image: item.image, type: item.type } };
                     });
                 };
 
@@ -91,11 +94,18 @@ export default function Explorar(){
 
     // Template para cada item do Carousel
     const contentCard = (data: ContentCardProps) => {
+        const { id, name, image, type } = data.content;
+        const url = `/${type}s/${id}`; 
+
         return (
-            <div className="content-card">
-                <Tooltip target=".cover" mouseTrack mouseTrackLeft={10} />
-                <img src={data.content.image} alt={data.content.name} className="w-40 cursor-pointer cover" data-pr-tooltip={data.content.name}/>
-            </div>
+            <Link href={url} className="content-card" aria-label={`Ver detalhes de ${name}`}>
+                <img 
+                    src={image} 
+                    alt={name} 
+                    className={`w-40 cursor-pointer cover cover-${id}`} // Classe única para o Tooltip
+                    data-tooltip={name}
+                />
+            </Link>
         );
     };
 
@@ -131,28 +141,34 @@ export default function Explorar(){
     // --- RENDERIZAÇÃO PRINCIPAL ---
     return(
         <div className='explorar-container'>
-            <div className="categories-container">
+            <h1>Mergulhe no horror</h1>
+            <div className='categories-container'>
                 <CategoryButton name="Slasher" icon={<Knife />} />
                 <CategoryButton name="Sobrenatural" icon={<Ghost />} />
                 <CategoryButton name="Psicológico" icon={<Gaslight />} />
+                <CategoryButton name="Psicológico" icon={<Gaslight />} />
+                <CategoryButton name="Psicológico" icon={<Gaslight />} />
+                <CategoryButton name="Psicológico" icon={<Gaslight />} />
+                <CategoryButton name="Psicológico" icon={<Gaslight />} />
+                <CategoryButton name="Psicológico" icon={<Gaslight />} />
             </div>
             <h3>Clássicos</h3>
-            <Carousel value={classicos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} />
+            <Carousel value={classicos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
 
             <h3 className="mt-5">Em Alta</h3>
-            <Carousel value={emAlta} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} />
+            <Carousel value={emAlta} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
             
             <h3 className="mt-5">Ícones do Slasher</h3>
-            <Carousel value={iconesSlasher} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} />
+            <Carousel value={iconesSlasher} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
 
             <h3 className="mt-5">Mistério e Suspense</h3>
-            <Carousel value={misterioSuspense} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} />
+            <Carousel value={misterioSuspense} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
 
             <h3 className="mt-5">Bonecos(as) Assassinos</h3>
-            <Carousel value={bonecosAssassinos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} />
+            <Carousel value={bonecosAssassinos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
 
             <h3 className="mt-5">Para Você</h3>
-            <Carousel value={paraVoce} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} />
+            <Carousel value={paraVoce} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
         </div>
     );
 }

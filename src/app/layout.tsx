@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Wix_Madefor_Display, Spectral } from "next/font/google";
+import { Geist, Geist_Mono, Wix_Madefor_Display, Spectral, Trade_Winds } from "next/font/google";
 import "./globals.css";
 import "./styles.scss";
 import Header from "./components/Header/Header";
 // import LogDialog from "./components/Dialogs/Dialog";
+import 'primereact/resources/themes/saga-blue/theme.css'; // Choose your theme
+import 'primereact/resources/primereact.min.css'; // Core CSS
+import Tooltip from "./components/Tooltip";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +30,12 @@ const spectral = Spectral({
   subsets: ["latin"]
 });
 
+const tradeWinds = Trade_Winds({
+  variable: "--font-winds",
+  weight: "400",
+  
+})
+
 export const metadata: Metadata = {
   title: "Pavorama",
   description: "Horror Tracker",
@@ -39,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${wixDisplay.variable} ${geistMono.variable} ${spectral.variable} antialiased`}
+        className={`${wixDisplay.variable} ${geistMono.variable} ${spectral.variable} ${tradeWinds.variable} antialiased`}
       >
         <Header/>
         {/* <LogDialog /> */}
@@ -48,6 +58,7 @@ export default function RootLayout({
           {children}
         </div>
         <div id="modal-root"></div>
+        <Tooltip />
       </body>
     </html>
   );

@@ -1,0 +1,20 @@
+.button{
+    display: flex;
+    height: 40px;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--calcario);
+    align-items: center;
+    justify-content: center;
+    text-wrap: nowrap;
+    font-size: 14px;
+
+    &:hover{
+        background-color: var(--absinto);
+        box-shadow: var(--glow);
+        color: var(--breu);
+    }
+}
