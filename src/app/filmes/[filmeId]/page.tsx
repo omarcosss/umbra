@@ -9,6 +9,7 @@ import { Rating } from "primereact/rating";
 import { PlusIcon, SkullIcon, ShareIcon } from '@phosphor-icons/react';
 import Button from '@/app/components/Button';
 import './styles.scss'; // Reutilize o mesmo estilo da página de série, se aplicável
+import Breadcrumbs from '@/app/components/Breadcrumbs/Breadcrumbs';
 
 // Interface para o objeto de conteúdo
 interface ContentItem {
@@ -89,6 +90,10 @@ export default function FilmeDetalhe() {
 
     return (
         <div className="">
+            <Breadcrumbs routeList={[
+                { label: "Filmes", route: "/filmes" },
+                { label: filme.name, route: `/filmes/${filmeId}` },
+            ]} />
             <div className="filme-details">
                 <div className="filme-details__poster">
                     <Image src={filme.image} alt={`Pôster de ${filme.name}`} width="100%" preview />

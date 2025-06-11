@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Para o loading
-import { Knife, Ghost, Gaslight } from '../components/CustomIcons/Knife';
+import { Knife, Ghost, Gaslight, Scratch, Masks, HauntedHouse, Amulet, Bones } from '../components/CustomIcons/Knife';
 import "./styles.scss";
 import Link from 'next/link';
 
@@ -106,7 +106,7 @@ export default function Explorar(){
                 <img 
                     src={image} 
                     alt={name} 
-                    className={`w-40 cursor-pointer cover cover-${id}`} // Classe única para o Tooltip
+                    className={`cursor-pointer pr-4 cover cover-${id}`}
                     data-tooltip={name}
                 />
             </Link>
@@ -150,11 +150,11 @@ export default function Explorar(){
                 <CategoryButton name="Slasher" icon={<Knife />} />
                 <CategoryButton name="Sobrenatural" icon={<Ghost />} />
                 <CategoryButton name="Psicológico" icon={<Gaslight />} />
-                <CategoryButton name="Psicológico" icon={<Gaslight />} />
-                <CategoryButton name="Psicológico" icon={<Gaslight />} />
-                <CategoryButton name="Psicológico" icon={<Gaslight />} />
-                <CategoryButton name="Psicológico" icon={<Gaslight />} />
-                <CategoryButton name="Psicológico" icon={<Gaslight />} />
+                <CategoryButton name="Criaturas" icon={<Scratch />} />
+                <CategoryButton name="Comédia de Terror" icon={<Masks />} />
+                <CategoryButton name="Home Invasion" icon={<HauntedHouse />} />
+                <CategoryButton name="Sci-Fi" icon={<Amulet />} />
+                <CategoryButton name="Body Horror" icon={<Bones />} />
             </div>
             <h3>Clássicos</h3>
             <Carousel value={classicos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />

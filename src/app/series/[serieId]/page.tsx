@@ -10,6 +10,7 @@ import { PlusIcon, SkullIcon, ShareIcon } from '@phosphor-icons/react';
 import Button from '@/app/components/Button';
 import { useParams } from 'next/navigation';
 import { TabView, TabPanel } from 'primereact/tabview';
+import Breadcrumbs from '@/app/components/Breadcrumbs/Breadcrumbs';
 
 // Interface para o objeto de conteúdo
 interface ContentItem {
@@ -94,6 +95,10 @@ export default function SerieDetalhe() {
 
     return (
         <div className="">
+            <Breadcrumbs routeList={[
+                { label: "Séries", route: "/series" },
+                { label: serie.name, route: `/series/${serieId}` },
+            ]} />
             <div className="serie-details">
                 <div className="serie-details__poster">
                     <Image src={serie.image} alt={`Pôster de ${serie.name}`} width="100%" preview />

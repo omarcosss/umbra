@@ -94,7 +94,7 @@ export default function Series() {
                 <img 
                     src={image} 
                     alt={name} 
-                    className={`w-40 cursor-pointer cover cover-${id}`} // Classe única
+                    className={`cursor-pointer pr-4 cover cover-${id}`}
                     data-pr-tooltip={name}
                 />
             </Link>
