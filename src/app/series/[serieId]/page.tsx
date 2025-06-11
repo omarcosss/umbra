@@ -13,6 +13,8 @@ import { TabView, TabPanel } from 'primereact/tabview';
 import Breadcrumbs from '@/app/components/Breadcrumbs/Breadcrumbs';
 import EpisodeCard from '@/app/components/EpisodeCard';
 import { Carousel } from 'primereact/carousel';
+import Comentario, {genericHorrorComments} from '@/app/components/Comentario';
+import CommentInput from '@/app/components/ComponentInput';
 
 // Interface para o objeto de conteúdo
 interface ContentItem {
@@ -32,6 +34,10 @@ export default function SerieDetalhe() {
     const [rating, setRating] = useState(4);
 
     const qntEpisodios = Array.from({ length: 12 }, (_, index) => index);
+
+    const handleCommentPost = (commentText: string) => {
+        console.log('New comment posted:', commentText);
+    };
 
     useEffect(() => {
         // Função para buscar os dados apenas desta série
@@ -162,6 +168,19 @@ export default function SerieDetalhe() {
                         />
                     </TabPanel>
                 </TabView>
+                <CommentInput onPost={handleCommentPost} />
+                {genericHorrorComments.map((comment, index) => (
+                    <Comentario
+                        key={index} // Idealmente, cada comentário teria um ID único do backend
+                        avatarSrc={comment.avatarSrc}
+                        userName={comment.userName}
+                        timeAgo={comment.timeAgo}
+                        commentText={comment.commentText}
+                        likes={comment.likes}
+                        dislikes={comment.dislikes}
+                        hashtags={comment.hashtags}
+                    />
+                ))}
             </div>
         </div>
     );
