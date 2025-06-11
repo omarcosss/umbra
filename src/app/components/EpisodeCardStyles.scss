@@ -1,0 +1,35 @@
+.episode-card {
+  background-color: #1a1a1a;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 300px;
+//   margin-right: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.episode-card img {
+  width: 100%;
+  display: block;
+}
+
+.episode-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #222;
+}
+
+.episode-card-title {
+  font-size: 16px;
+  color: #ddd;
+}
+
+.episode-card-check {
+  border: 1px solid #ccff00;
+  color: var(--absinto);
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-weight: bold;
+  font-size: 14px;
+}

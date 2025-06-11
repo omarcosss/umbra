@@ -11,6 +11,8 @@ import Button from '@/app/components/Button';
 import { useParams } from 'next/navigation';
 import { TabView, TabPanel } from 'primereact/tabview';
 import Breadcrumbs from '@/app/components/Breadcrumbs/Breadcrumbs';
+import EpisodeCard from '@/app/components/EpisodeCard';
+import { Carousel } from 'primereact/carousel';
 
 // Interface para o objeto de conteúdo
 interface ContentItem {
@@ -28,6 +30,8 @@ export default function SerieDetalhe() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [rating, setRating] = useState(4);
+
+    const qntEpisodios = Array.from({ length: 12 }, (_, index) => index);
 
     useEffect(() => {
         // Função para buscar os dados apenas desta série
@@ -124,14 +128,38 @@ export default function SerieDetalhe() {
             </div>
             <div className="episodes">
                 <TabView>
-                    <TabPanel header="Temporada 1">
-                        lista de episodios 1
+                    <TabPanel header="Temporada 1" className=''>
+                        <Carousel 
+                            value={qntEpisodios} 
+                            numScroll={1} 
+                            numVisible={3} 
+                            itemTemplate={EpisodeCard}
+                            showIndicators={false}
+
+                            // responsiveOptions={responsiveOptions}
+                        />
                     </TabPanel>
                     <TabPanel header="Temporada 2">
-                        lista de episodios 2
+                        <Carousel 
+                            value={qntEpisodios} 
+                            numScroll={1} 
+                            numVisible={3} 
+                            itemTemplate={EpisodeCard}
+                            showIndicators={false}
+
+                            // responsiveOptions={responsiveOptions}
+                        />
                     </TabPanel>
                     <TabPanel header="Temporada 3">
-                        lista de episodios 3
+                        <Carousel 
+                            value={qntEpisodios} 
+                            numScroll={1} 
+                            numVisible={3} 
+                            itemTemplate={EpisodeCard}
+                            showIndicators={false}
+
+                            // responsiveOptions={responsiveOptions}
+                        />
                     </TabPanel>
                 </TabView>
             </div>
