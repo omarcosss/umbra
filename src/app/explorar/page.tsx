@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
-import { Tooltip } from 'primereact/tooltip';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Para o loading
 import { Knife, Ghost, Gaslight } from '../components/CustomIcons/Knife';
 import "./styles.scss";
@@ -81,9 +80,14 @@ export default function Explorar(){
                 setIconesSlasher(buildCategoryList(data.categorias.iconesSlasher));
                 setMisterioSuspense(buildCategoryList(data.categorias.misterioESuspense));
 
-            } catch (err: any) {
-                setError(err.message);
-                console.error("Erro ao buscar os dados:", err);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                    console.error("Erro ao buscar os dados:", err);
+                } else {
+                    setError("Erro desconhecido ao buscar os dados.");
+                    console.error("Erro desconhecido ao buscar os dados:", err);
+                }
             } finally {
                 setLoading(false); // Termina o loading, com sucesso ou erro
             }

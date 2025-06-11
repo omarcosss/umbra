@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
-import { Tooltip } from 'primereact/tooltip';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
 // Importe o mesmo arquivo de estilo ou crie um novo
@@ -69,9 +68,14 @@ export default function Series() {
                 setAclamadasPelaCritica(buildSeriesCategoryList(data.categorias.aclamadosPelaCritica));
                 setTerrorPsicologico(buildSeriesCategoryList(data.categorias.terrorPsicologico));
 
-            } catch (err: any) {
-                setError(err.message);
-                console.error("Erro ao buscar os dados:", err);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                    console.error("Erro ao buscar os dados:", err);
+                } else {
+                    setError("Erro desconhecido");
+                    console.error("Erro ao buscar os dados:", err);
+                }
             } finally {
                 setLoading(false);
             }

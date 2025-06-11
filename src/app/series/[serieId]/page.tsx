@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ProgressSpinner } from 'primereact/progressspinner';
-import { Tag } from 'primereact/tag';
 import { Image } from 'primereact/image';
 import './styles.scss';
 import { Rating } from "primereact/rating";
@@ -51,9 +50,14 @@ export default function SerieDetalhe() {
                     throw new Error('Série não encontrada.');
                 }
 
-            } catch (err: any) {
-                setError(err.message);
-                console.error("Erro:", err);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                    console.error("Erro:", err);
+                } else {
+                    setError('Ocorreu um erro desconhecido.');
+                    console.error("Erro desconhecido:", err);
+                }
             } finally {
                 setLoading(false);
             }

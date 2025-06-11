@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
-import { Tooltip } from 'primereact/tooltip';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
 // Use o mesmo arquivo de estilo
@@ -74,9 +73,14 @@ export default function Filmes() {
                 setFoundFootage(buildFilmesCategoryList(data.categorias.foundFootage));
                 setHorrorCorporal(buildFilmesCategoryList(data.categorias.horrorCorporal));
 
-            } catch (err: any) {
-                setError(err.message);
-                console.error("Erro ao buscar os dados:", err);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                    console.error("Erro ao buscar os dados:", err);
+                } else {
+                    setError("Erro desconhecido ao buscar os dados.");
+                    console.error("Erro desconhecido ao buscar os dados:", err);
+                }
             } finally {
                 setLoading(false);
             }

@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { ProgressSpinner } from 'primereact/progressspinner';
-import { Tag } from 'primereact/tag';
 import { Image } from 'primereact/image';
 import { Rating } from "primereact/rating";
 import { PlusIcon, SkullIcon, ShareIcon } from '@phosphor-icons/react';
@@ -50,8 +49,12 @@ export default function FilmeDetalhe() {
                     throw new Error('Filme não encontrado.');
                 }
 
-            } catch (err: any) {
-                setError(err.message);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                } else {
+                    setError('Ocorreu um erro desconhecido.');
+                }
             } finally {
                 setLoading(false);
             }

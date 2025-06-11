@@ -1,7 +1,7 @@
 // import Image from "next/image";
 'use client';
 import { Carousel } from 'primereact/carousel';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tooltip } from 'primereact/tooltip';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Para o loading
 import "./styles.scss"
@@ -49,9 +49,14 @@ export default function Home() {
                 };
                 // Monta as listas para cada categoria e atualiza os estados
                 setEmAlta(buildCategoryList(data.categorias.emAlta));
-                 } catch (err: any) {
-                setError(err.message);
-                console.error("Erro ao buscar os dados:", err);
+                 } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                    console.error("Erro ao buscar os dados:", err);
+                } else {
+                    setError('Erro desconhecido');
+                    console.error("Erro ao buscar os dados:", err);
+                }
             } finally {
                 setLoading(false); // Termina o loading, com sucesso ou erro
             }
@@ -87,16 +92,7 @@ export default function Home() {
         </div>
                 
         )};
-    
-        const responsiveOptions = [
-            { breakpoint: '1400px', numVisible: 5, numScroll: 1 },
-            { breakpoint: '1199px', numVisible: 4, numScroll: 1 },
-            { breakpoint: '991px', numVisible: 3, numScroll: 1 },
-            { breakpoint: '767px', numVisible: 2, numScroll: 1 },
-            { breakpoint: '575px', numVisible: 1, numScroll: 1 }
-        ];
-    
-        // --- RENDERIZAÇÃO CONDICIONAL ---
+
         if (loading) {
             return (
                 <div className='explorar-container flex justify-center items-center h-screen'>

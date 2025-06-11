@@ -8,7 +8,7 @@ interface PortalProps {
   selector: string;
 }
 
-const Portal: React.FC<PortalProps> = ({ children, selector }) => {
+const Portal: React.FC<PortalProps> = ({ children, selector }:PortalProps) => {
   const ref = useRef<Element | null>(null);
   const [mounted, setMounted] = useState(false);
 
