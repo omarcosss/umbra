@@ -360,10 +360,24 @@
       "type": "serie",
       "image": "https://artworks.thetvdb.com/banners/posters/262414-4.jpg",
       "description": "Uma prequela contemporânea do filme 'Psicose', que retrata a vida de Norman Bates e sua mãe, Norma, e a relação complexa que os leva a um caminho sombrio e violento."
+    },
+    "re-zero":{
+      "name": "Re:ZERO -Starting Life in Another World",
+      "type": "serie",
+      "image":"https://artworks.thetvdb.com/banners/posters/305089-2.jpg",
+      "description": "Pouco depois de ser convocado para um novo mundo, Subaru Natsuki e sua nova companheira são brutalmente assassinados. Mas então ele acorda e se encontra no mesmo beco, com os mesmos bandidos, a mesma garota, e o dia começa a se repetir."
+    },
+    "the-promised-neverland":{
+      "name": "The Promised Neverland",
+      "type": "serie",
+      "image": "https://artworks.thetvdb.com/banners/v4/series/348002/posters/66dee07dccfff.jpg",
+      "description": "A mulher a quem chamam de 'mãe' não é uma mãe de verdade. As crianças que convivem naquele lugar não são irmãos de verdade. Na Casa Grace Field, moram apenas crianças órfãs. Um lar sem igual, onde 38 crianças sem parentesco algum levam vidas felizes ao lado de suas mães. Até que sua rotina pacífica chega a um fim abrupto..."
     }
   },
 
   "categorias": {
+    "assistindoAgora" : [ "re-zero","stranger-things","the-promised-neverland","the-last-of-us"],
+    "semAssistirHaUmTempo":["american-horror-story","hannibal","the-walking-dead","black-mirror","servant","yellowjackets","bates-motel","alem-da-imaginacao"],
     "classicos": [ "o-exorcista", "psicose", "o-iluminado", "o-enigma-de-outro-mundo", "o-silencio-dos-inocentes", "sexta-feira-13", "a-hora-do-pesadelo", "a-bruxa-de-blair", "o-sexto-sentido", "alem-da-imaginacao" ],
     "emAlta": [ "fale-comigo", "sorria", "noites-brutais", "the-last-of-us", "stranger-things", "m3gan", "pearl", "terrifier-2", "imaculada", "quando-o-mal-espreita", "origem", "yellowjackets" ],
     "paraVoce": [ "midsommar", "o-babadook", "corrente-do-mal", "deixa-ela-entrar", "a-autopsia", "o-segredo-da-cabana", "a-queda-da-casa-de-usher", "o-menu", "servant" ],

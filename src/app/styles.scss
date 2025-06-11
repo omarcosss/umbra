@@ -1,3 +1,12 @@
+.home-container{
+    h1{
+        font-family: var(--font-winds), var(--font-spectral), Times, serif;
+        font-size: 32px;
+        color: var(--calcario);
+        text-shadow: 0px 0px 41.7px 0px rgba(221, 255, 0, 0.27);
+        text-align: center;
+    }
+}
 /* Estilos para o Carrossel de Destaque (Highlights) */
 
 .highlights-slide {
@@ -10,38 +19,7 @@
 
 }
 
-/* Full bleed */
-.p-carousel:has(.highlights-slide) {
-    position: relative;
-    margin: -2rem calc(50% - 50vw) 0;
 
-    .p-carousel-next {
-        position: absolute;
-        // top: 50%;
-        right: 0;
-        z-index: 90;
-    }
-    .p-carousel-prev {
-        position: absolute;
-        left: 0;
-        z-index: 90;
-    }
-
-    &::after {
-        position: absolute;
-        bottom: 0;
-        content: "";
-        display: block;
-        height: 400px;
-        width: 100%;
-        background: linear-gradient(to bottom, transparent 0%, var(--breu) 80%, var(--breu) 100%);
-    }
-}
-
-.post-carousel {
-    margin-top: -200px;
-    z-index: 90;
-}
 
 /* A NOVA CLASSE PARA A IMAGEM 👇 */
 .highlights-image-element {
@@ -117,6 +95,7 @@
     font-size: 1.1rem;
     margin-bottom: 2rem;
     max-width: 500px; /* Limita a largura da descrição */
+    font-family: var(--font-spectral), Times, serif;
 }
 
 .highlights-button {
@@ -134,8 +113,91 @@
     color: black;
 }
 
-/* Customização opcional das setas do PrimeReact */
-.p-carousel .p-carousel-indicators {
-    /* Esconde os pontinhos de navegação, se não quiser */
-    display: none; 
+.secao-inferior {
+    h3 {
+    margin-bottom: 1rem;
 }
+  position: relative; /* Boa prática para controle de z-index e overflow */
+  height: 50%; /* Altura menor para o contêiner. Ajuste este valor! */
+  overflow: visible; /* Permite o "vazamento" */
+  padding: 0; /* Adiciona um espaçamento lateral para o conteúdo não colar na tela */
+  margin-top: 0rem; 
+}
+
+.highlights-container {
+  /* Adiciona um espaço de 48px abaixo do carrossel principal */
+  margin-bottom: -20rem;
+  margin-top: 0rem; 
+  position: relative;
+  width: 100vw; /* 100% da largura da tela (viewport width) */
+  left: 50%;
+  transform: translateX(-50%);
+  .p-carousel .p-carousel-item { padding: 0 !important; }
+    .content-card {
+    /* 1. Tamanho do card (ajuste os valores como preferir) */
+    width: 160px;
+    display: inline-block;
+
+    /* 2. ESPAÇAMENTO (a sua pergunta original) */
+    /* Adiciona uma margem de 12px na esquerda e na direita para criar distância */
+    margin: 0 0.4rem; 
+    /* 3. Garantimos que o card não encolha em layouts flexíveis */
+    flex-shrink: 0;
+
+    /* 3. Estilos de Transição (Opcional, para um efeito suave) */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    /* Efeito de zoom suave ao passar o mouse */
+    &:hover {
+        transform: scale(1.05);
+    }
+    
+    }
+
+    /* Regra para a imagem DENTRO do card */
+    .content-card img {
+    /* Faz a imagem preencher 100% do card */
+    width: 100%;
+    height: auto;
+    
+    /* Garante que a imagem cubra a área sem distorcer */
+    object-fit: cover; 
+    
+    /* Opcional: para deixar as bordas do pôster arredondadas */
+    border-radius: 8px; 
+    }
+    /* Full bleed */
+.p-carousel:has(.highlights-slide) {
+    position: relative;
+    margin: -2rem calc(50% - 50vw) 0;
+    .p-carousel-next {
+        position: absolute;
+        // top: 50%;
+        right: 0;
+        z-index: 90;
+    }
+    .p-carousel-prev {
+        position: absolute;
+        left: 0;
+        z-index: 90;
+    }
+
+    &::after {
+        position: absolute;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 400px;
+        width: 100%;
+        background: linear-gradient(to bottom, transparent 0%, var(--breu) 80%, var(--breu) 100%);
+    }
+}
+
+.post-carousel {
+    margin-top: -200px;
+    z-index: 90;
+}
+}
+/* 1. Zera o padding interno dos itens do carrossel da biblioteca */
+
