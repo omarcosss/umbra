@@ -88,10 +88,10 @@ Este projeto está sendo desenvolvido por uma equipe dedicada de estudantes:
 
 ### Comparações (Figma/Projeto)
 
-![Home!](/compare/Home.png "Home")
+![Home!](./public/compare/Home.png "Home")
 
-![Detalhes!](/compare/Detalhes.png "Detalhes")
+![Detalhes!](./public/compare/Detalhes.png "Detalhes")
 
-![Explorar!](/compare/Explorar.png "Explorar")
+![Explorar!](./public/compare/Explorar.png "Explorar")
 
-![Perfil!](/compare/Perfil.png "Perfil")
+![Perfil!](./public/compare/Perfil.png "Perfil")
