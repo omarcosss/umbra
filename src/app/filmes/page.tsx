@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 // import { Carousel } from 'primereact/carousel';
 import { Carousel } from '../components/Carousel';
 
@@ -10,7 +10,34 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 import "./styles.scss"; 
 import Link from 'next/link';
 
+const useResponsiveValues = () => {
+    const [values, setValues] = useState({ numVisible: 5, numScroll: 5 });
+
+    const calculateValues = useCallback(() => {
+        const width = window.innerWidth;
+        if (width < 768) { // Telas pequenas (mobile)
+            setValues({ numVisible: 3, numScroll: 3 });
+        } else if (width < 991) { // Telas um pouco maiores (sm)
+            setValues({ numVisible: 4, numScroll: 4 });
+        } else if (width < 1199) { // Tablets (md)
+            setValues({ numVisible: 5, numScroll: 5 });
+        } else { // Desktops (lg e acima)
+            setValues({ numVisible: 6, numScroll: 6 });
+        }
+    }, []);
+
+    useEffect(() => {
+        calculateValues();
+        window.addEventListener('resize', calculateValues);
+        return () => window.removeEventListener('resize', calculateValues);
+    }, [calculateValues]);
+
+    return values;
+};
+
 export default function Filmes() {
+
+    const { numVisible, numScroll } = useResponsiveValues();
     
     type ContentItem = {
         id: string; 
@@ -127,22 +154,22 @@ export default function Filmes() {
     return (
         <div className='filmes-container'>
             <h3>Filmes Populares</h3>
-            <Carousel value={filmesPopulares} numScroll={1} numVisible={5} itemTemplate={contentCard} />
+            <Carousel value={filmesPopulares} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Clássicos do Terror</h3>
-            <Carousel value={classicos} numScroll={1} numVisible={5} itemTemplate={contentCard} />
+            <Carousel value={classicos} numScroll={numScroll} numVisible={numVisible}  itemTemplate={contentCard} />
 
             <h3 className="mt-5">Ícones do Slasher</h3>
-            <Carousel value={iconesSlasher} numScroll={1} numVisible={5} itemTemplate={contentCard} />
+            <Carousel value={iconesSlasher} numScroll={numScroll} numVisible={numVisible}  itemTemplate={contentCard} />
 
             <h3 className="mt-5">Terror Psicológico</h3>
-            <Carousel value={terrorPsicologico} numScroll={1} numVisible={5} itemTemplate={contentCard} />
+            <Carousel value={terrorPsicologico} numScroll={numScroll} numVisible={numVisible}  itemTemplate={contentCard} />
             
             <h3 className="mt-5">Found Footage</h3>
-            <Carousel value={foundFootage} numScroll={1} numVisible={5} itemTemplate={contentCard} />
+            <Carousel value={foundFootage} numScroll={numScroll} numVisible={numVisible}  itemTemplate={contentCard} />
             
             <h3 className="mt-5">Horror Corporal</h3>
-            <Carousel value={horrorCorporal} numScroll={1} numVisible={5} itemTemplate={contentCard} />
+            <Carousel value={horrorCorporal} numScroll={numScroll} numVisible={numVisible}  itemTemplate={contentCard} />
         </div>
     );
 }

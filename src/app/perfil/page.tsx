@@ -34,14 +34,14 @@ const useResponsiveValues = () => {
 
     const calculateValues = useCallback(() => {
         const width = window.innerWidth;
-        if (width < 640) { // Telas pequenas (mobile)
-            setValues({ numVisible: 1, numScroll: 1 });
-        } else if (width < 768) { // Telas um pouco maiores (sm)
-            setValues({ numVisible: 2, numScroll: 1 });
-        } else if (width < 1024) { // Tablets (md)
-            setValues({ numVisible: 3, numScroll: 1 });
+        if (width < 768) { // Telas pequenas (mobile)
+            setValues({ numVisible: 3, numScroll: 3 });
+        } else if (width < 991) { // Telas um pouco maiores (sm)
+            setValues({ numVisible: 4, numScroll: 4 });
+        } else if (width < 1199) { // Tablets (md)
+            setValues({ numVisible: 5, numScroll: 5 });
         } else { // Desktops (lg e acima)
-            setValues({ numVisible: 5, numScroll: 1 });
+            setValues({ numVisible: 6, numScroll: 6 });
         }
     }, []);
 
