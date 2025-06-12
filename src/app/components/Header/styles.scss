@@ -11,7 +11,7 @@ header{
     backdrop-filter: blur(13.800000190734863px);
     z-index: 100;
     .container{
-        // position: relative;
+        position: relative;
         display: flex;
         height: 100%;
         width: 100%;
@@ -25,10 +25,6 @@ header{
         overflow-y:hidden;
 
         width: 100%;
-
-        .user-container {
-            display: none;
-        }
     }
 
     .actions-container{
@@ -39,6 +35,10 @@ header{
     }
 
     .user-container {
+        position: absolute;
+        right: 0;
+        top: 20px;
+        
         display: flex;
         gap: 0;
     }
@@ -129,6 +129,7 @@ header{
     border-radius: 3px;
     box-shadow: var(--sombra);
     top: 99%;
+    transform: translate(0, 20px);
 
     transition: transform 0.3s ease;
 
@@ -176,12 +177,14 @@ header{
     gap: 10px;
     overflow-x: auto;
     max-height: 500px;
+    transform: translate(0, 20px);
 
     transition: transform 0.3s ease;
 
     .notification{
         display: flex;
         padding: 5px 0px;
+        padding-top: 0;
         gap: 5px;
         align-self: stretch;
         border-bottom: 1px solid color-mix(in oklab, var(--calcario) 10%, transparent);
@@ -207,11 +210,17 @@ header{
         }
     }
     span{
+        position: sticky;
+        top: 0;
+        background-color: var(--breu);
+        z-index: 10;    
+
         width: 100%;
         text-align: start;
         font-size: 14px;
         font-family: var(--font-spectral);
         font-weight: 700;
+        padding-top: 5px;
         padding-bottom: 10px;
         border-bottom: 1px solid color-mix(in oklab, var(--calcario) 40%, transparent);
 
@@ -240,6 +249,7 @@ header{
     background-color: var(--absinto);
     margin: auto 0;
     cursor: pointer;
+    margin-right: calc(140px + 20px);
 
     transition: box-shadow 0.3s ease;
 
@@ -318,14 +328,14 @@ header{
             &.show-search {
                 max-height: 100px;
             }
+        }
 
-            .user-container {
-                position: absolute;
-                right: 0.5rem;
-                top: 1rem;
+        .user-container {
+            position: absolute;
+            right: 0.5rem;
+            top: 1rem;
 
-                display: flex;
-            }
+            display: flex;
         }
 
         .actions-container{
@@ -352,7 +362,12 @@ header{
             }
 
             .user-container {
-                display: none;
+                position: absolute;
+                bottom: calc(100vh - 40px);
+                right: 0.5rem;
+                
+                visibility: hidden;
+                pointer-events: none;
             }
         }
     }
@@ -370,6 +385,7 @@ header{
         justify-content: center;
         padding: 0;
         margin: 0;
+        margin-right: unset;
 
         transform-origin: bottom right;
         transform: scale(130%);

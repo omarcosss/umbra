@@ -195,11 +195,11 @@ export default function Header(){
             <Image src="/logo.png" alt="" width={201.5} height={125} priority={true} />
           </Link>
           <SearchInput />
-          <div className="user-container">
-            <MobileSearchButton searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
-            <NotificationsButton />
-            <UserButton />
-          </div>
+        </div>
+        <div className="user-container">
+          <MobileSearchButton searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
+          <NotificationsButton />
+          <UserButton />
         </div>
         <div className="actions-container">
           <nav>
@@ -207,13 +207,8 @@ export default function Header(){
             <NavLink href="/series" label="Séries" isActive={pathname === '/series' ? true : false}/>
             <NavLink href="/filmes" label="Filmes" isActive={pathname === '/filmes' ? true : false}/>
             <NavLink href="/explorar" label="Explorar" isActive={pathname === '/explorar' ? true : false}/>
-            
           </nav>
           <LogButton setShowLogModal={setShowLogModal} />
-          <div className="user-container">
-            <NotificationsButton />
-            <UserButton />
-          </div>
         </div>
       </div>
       <Modal

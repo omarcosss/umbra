@@ -15,7 +15,7 @@ const CategoryButton = ({icon, name}: categoryButtonProps) => {
     return(
         <div className="category-button">
             {icon}
-            {name}
+            <span>{name}</span>
         </div>
     );
 };
