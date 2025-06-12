@@ -48,11 +48,6 @@
     }
 }
 
-.post-carousel {
-    margin-top: -200px;
-    z-index: 80;
-}
-
 /* A NOVA CLASSE PARA A IMAGEM 👇 */
 .highlights-image-element {
     /* 1. Posicionamento */
@@ -147,14 +142,15 @@
 }
 
 .secao-inferior {
+    position: relative; /* Boa prática para controle de z-index e overflow */
+    height: 50%; /* Altura menor para o contêiner. Ajuste este valor! */
+    overflow: visible; /* Permite o "vazamento" */
+    padding: 0; /* Adiciona um espaçamento lateral para o conteúdo não colar na tela */
+    margin-top: 2rem;
+
     h3 {
-    margin-bottom: 1rem;
-}
-  position: relative; /* Boa prática para controle de z-index e overflow */
-  height: 50%; /* Altura menor para o contêiner. Ajuste este valor! */
-  overflow: visible; /* Permite o "vazamento" */
-  padding: 0; /* Adiciona um espaçamento lateral para o conteúdo não colar na tela */
-  margin-top: 0rem; 
+        margin-bottom: 1rem;
+    }
 }
 
 .highlights-container {
@@ -226,11 +222,6 @@
         background: linear-gradient(to bottom, transparent 0%, var(--breu) 80%, var(--breu) 100%);
     }
 }
-
-.post-carousel {
-    margin-top: -200px;
-    z-index: 90;
-}
 }
 /* 1. Zera o padding interno dos itens do carrossel da biblioteca */
 
@@ -287,5 +278,9 @@
         // text-align: center;
         max-width: 70%;
         font-size: 0.90rem;
+    }
+
+    .secao-inferior {
+        margin-top: 8rem;
     }
 }
