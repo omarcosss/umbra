@@ -26,9 +26,9 @@ export default function Home() {
         }
     };
     // Estados para armazenar as listas de cada categoria
-  const [emAlta, setEmAlta] = useState<ContentCardProps[]>([]);
-  const [assistindoAgora, setAssistindoAgora] = useState <ContentCardProps[]>([]);
-  const [semAssistirHaUmTempo, setSemAssistirHaUmTempo] = useState <ContentCardProps[]>([]);
+    const [emAlta, setEmAlta] = useState<ContentCardProps[]>([]);
+    const [assistindoAgora, setAssistindoAgora] = useState <ContentCardProps[]>([]);
+    const [semAssistirHaUmTempo, setSemAssistirHaUmTempo] = useState <ContentCardProps[]>([]);
     // Estados para controle de loading e erro
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -74,36 +74,31 @@ export default function Home() {
     }, []); // O array vazio [] faz com que o useEffect rode apenas uma vez
 
      // Template para cada item do Carousel
-        const highlightsCard = (data: ContentCardProps) => {
-            const { id, name, image, type } = data.content;
-            const url = `/${type}s/${id}`;
-            return (
-                <div className="highlights-slide">
-                    <Tooltip target=".cover" mouseTrack mouseTrackLeft={10} />
-                     {/* Imagem de fundo */}
-            {/* <div 
-                className="highlights-background" 
-                style={{ backgroundImage: `url(${data.content.image})`}}
-            ></div> */}
-             <img src={data.content.image} alt={data.content.name} className="highlights-image-element"/>
+    const highlightsCard = (data: ContentCardProps) => {
+        const { id, name, image, type } = data.content;
+        const url = `/${type}s/${id}`;
 
+        return (
+            <div className="highlights-slide">
+                <Tooltip target=".cover" mouseTrack mouseTrackLeft={10} />
+                <img src={image} alt={name} className="highlights-image-element"/>
 
-            {/* Overlay para escurecer o fundo e dar legibilidade ao texto */}
-            <div className="highlights-overlay"></div>
+                {/* Overlay para escurecer o fundo e dar legibilidade ao texto */}
+                <div className="highlights-overlay"></div>
 
-            {/* Conteúdo de texto sobre a imagem */}
-            <div className="highlights-content">
-                <h1 className="highlights-title">{data.content.name}</h1>
-                <p className="highlights-description">
-                    {data.content.description || 'opa.'}
-                </p>
-                <Link href={url} className="highlights-button">Vai encarar?</Link>
+                {/* Conteúdo de texto sobre a imagem */}
+                <div className="highlights-content">
+                    <h1 className="highlights-title">{name}</h1>
+                    <p className="highlights-description">
+                        {data.content.description || 'opa.'}
+                    </p>
+                    <Link href={url} className="highlights-button">Vai encarar?</Link>
+                </div>
             </div>
-        </div>
-                
-        )};
-        {/* contentcard para carrosel menor */}
-        const contentCard = (data: ContentCardProps) => {
+        );
+    };
+    
+    const contentCard = (data: ContentCardProps) => {
         const { id, name, image, type } = data.content;
         const url = `/${type}s/${id}`; 
 
@@ -119,7 +114,7 @@ export default function Home() {
         );
     };
 
-const responsiveOptions = [
+    const responsiveOptions = [
         { breakpoint: '1400px', numVisible: 5, numScroll: 1 },
         { breakpoint: '1199px', numVisible: 4, numScroll: 1 },
         { breakpoint: '991px', numVisible: 3, numScroll: 1 },
@@ -127,23 +122,23 @@ const responsiveOptions = [
         { breakpoint: '575px', numVisible: 1, numScroll: 1 }
     ];
     // --- RENDERIZAÇÃO CONDICIONAL ---
-        if (loading) {
-            return (
-                <div className='explorar-container flex justify-center items-center h-screen'>
-                    <ProgressSpinner />
-                </div>
-            );
-        }
-    
-        if (error) {
-            return (
-                <div className='explorar-container text-center'>
-                    <h2 className="text-red-500">Erro ao carregar os dados</h2>
-                    <p>{error}</p>
-                    <p>Verifique o console para mais detalhes e se o arquivo `dados.json` está na pasta `public`.</p>
-                </div>
-            );
-        }
+    if (loading) {
+        return (
+            <div className='explorar-container flex justify-center items-center h-screen'>
+                <ProgressSpinner />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className='explorar-container text-center'>
+                <h2 className="text-red-500">Erro ao carregar os dados</h2>
+                <p>{error}</p>
+                <p>Verifique o console para mais detalhes e se o arquivo `dados.json` está na pasta `public`.</p>
+            </div>
+        );
+    }
     
   return (
     <div className='home-container'>

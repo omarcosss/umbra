@@ -9,12 +9,12 @@ import { Rating } from "primereact/rating";
 import { PlusIcon, SkullIcon, ShareIcon } from '@phosphor-icons/react';
 import Button from '@/app/components/Button';
 import { useParams } from 'next/navigation';
-import { TabView, TabPanel } from 'primereact/tabview';
 import Breadcrumbs from '@/app/components/Breadcrumbs/Breadcrumbs';
 import EpisodeCard from '@/app/components/EpisodeCard';
 import { Carousel } from 'primereact/carousel';
 import Comentario, {genericHorrorComments} from '@/app/components/Comentario';
 import CommentInput from '@/app/components/ComponentInput';
+import TabsSection from '@/app/components/TabsSection/TabsSection';
 
 // Interface para o objeto de conteúdo
 interface ContentItem {
@@ -37,6 +37,22 @@ export default function SerieDetalhe() {
 
     const handleCommentPost = (commentText: string) => {
         console.log('New comment posted:', commentText);
+    };
+
+    const TabContent = () =>{
+        return (
+            <div className="flex flex-row py-2 w-full">
+                <Carousel 
+                    value={qntEpisodios} 
+                    numScroll={1} 
+                    numVisible={4} 
+                    itemTemplate={EpisodeCard}
+                    showIndicators={false}
+    
+                    // responsiveOptions={responsiveOptions}
+                />
+            </div>
+        );
     };
 
     useEffect(() => {
@@ -133,41 +149,12 @@ export default function SerieDetalhe() {
                 </div>
             </div>
             <div className="episodes">
-                <TabView>
-                    <TabPanel header="Temporada 1" className=''>
-                        <Carousel 
-                            value={qntEpisodios} 
-                            numScroll={1} 
-                            numVisible={3} 
-                            itemTemplate={EpisodeCard}
-                            showIndicators={false}
-
-                            // responsiveOptions={responsiveOptions}
-                        />
-                    </TabPanel>
-                    <TabPanel header="Temporada 2">
-                        <Carousel 
-                            value={qntEpisodios} 
-                            numScroll={1} 
-                            numVisible={3} 
-                            itemTemplate={EpisodeCard}
-                            showIndicators={false}
-
-                            // responsiveOptions={responsiveOptions}
-                        />
-                    </TabPanel>
-                    <TabPanel header="Temporada 3">
-                        <Carousel 
-                            value={qntEpisodios} 
-                            numScroll={1} 
-                            numVisible={3} 
-                            itemTemplate={EpisodeCard}
-                            showIndicators={false}
-
-                            // responsiveOptions={responsiveOptions}
-                        />
-                    </TabPanel>
-                </TabView>
+                <TabsSection alignment='start' tabs={[
+                    {label: "Temporada 1", content: <TabContent />},
+                    {label: "Temporada 2", content: <TabContent />},
+                    {label: "Temporada 3", content: <TabContent />}
+                ]} />
+                
                 <CommentInput onPost={handleCommentPost} />
                 {genericHorrorComments.map((comment, index) => (
                     <Comentario

@@ -72,7 +72,19 @@
     "kingdom": { "name": "Kingdom", "type": "serie", "image": "https://artworks.thetvdb.com/banners/posters/6420c6da5b624.jpg", "description": "Na Coreia medieval, o príncipe herdeiro é enviado em uma missão para investigar uma praga misteriosa que se espalha pelo país, descobrindo que os infectados se transformam em zumbis sedentos por carne." },
     "black-summer": { "name": "Black Summer", "type": "serie", "image": "https://artworks.thetvdb.com/banners/v4/series/350587/posters/60a7b0e62a0eb.jpg", "description": "Nos primeiros e mais sombrios dias de um apocalipse zumbi, estranhos devem se unir para sobreviver e encontrar seus entes queridos em um mundo caótico e violento." },
     "archive-81": { "name": "Arquivo 81", "type": "serie", "image": "https://artworks.thetvdb.com/banners/v4/series/390936/posters/61b915220ba4a.jpg", "description": "Um arquivista é contratado para restaurar fitas de vídeo danificadas e se vê envolvido em uma investigação misteriosa sobre uma seita perigosa e o desaparecimento da diretora dos vídeos." },
-    "castle-rock": { "name": "Castle Rock", "type": "serie", "image": "https://artworks.thetvdb.com/banners/v4/series/331600/posters/604be7de8ded8.jpg", "description": "Baseada no universo de Stephen King, a série entrelaça personagens e temas de suas obras mais icônicas na cidade fictícia de Castle Rock, Maine, explorando a escuridão que se esconde sob a superfície." }
+    "castle-rock": { "name": "Castle Rock", "type": "serie", "image": "https://artworks.thetvdb.com/banners/v4/series/331600/posters/604be7de8ded8.jpg", "description": "Baseada no universo de Stephen King, a série entrelaça personagens e temas de suas obras mais icônicas na cidade fictícia de Castle Rock, Maine, explorando a escuridão que se esconde sob a superfície." },
+    "re-zero":{
+      "name": "Re:ZERO -Starting Life in Another World",
+      "type": "serie",
+      "image":"https://artworks.thetvdb.com/banners/posters/305089-2.jpg",
+      "description": "Pouco depois de ser convocado para um novo mundo, Subaru Natsuki e sua nova companheira são brutalmente assassinados. Mas então ele acorda e se encontra no mesmo beco, com os mesmos bandidos, a mesma garota, e o dia começa a se repetir."
+    },
+    "the-promised-neverland":{
+      "name": "The Promised Neverland",
+      "type": "serie",
+      "image": "https://artworks.thetvdb.com/banners/v4/series/348002/posters/66dee07dccfff.jpg",
+      "description": "A mulher a quem chamam de 'mãe' não é uma mãe de verdade. As crianças que convivem naquele lugar não são irmãos de verdade. Na Casa Grace Field, moram apenas crianças órfãs. Um lar sem igual, onde 38 crianças sem parentesco algum levam vidas felizes ao lado de suas mães. Até que sua rotina pacífica chega a um fim abrupto..."
+    }
   },
   "categorias": {
     "assistindoAgora" : [ "re-zero","stranger-things","the-promised-neverland","the-last-of-us"],
