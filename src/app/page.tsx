@@ -1,15 +1,43 @@
 // import Image from "next/image";
 'use client';
 import { Carousel } from 'primereact/carousel';
-import React, { useState, useEffect } from 'react';
+import { Carousel as CustomCarousel } from './components/Carousel';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Tooltip } from 'primereact/tooltip';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Para o loading
 import "./styles.scss"
 import Link from 'next/link';
 
+const useResponsiveValues = () => {
+    const [values, setValues] = useState({ numVisible: 5, numScroll: 5 });
+
+    const calculateValues = useCallback(() => {
+        const width = window.innerWidth;
+        if (width < 640) { // Telas pequenas (mobile)
+            setValues({ numVisible: 1, numScroll: 1 });
+        } else if (width < 768) { // Telas um pouco maiores (sm)
+            setValues({ numVisible: 2, numScroll: 1 });
+        } else if (width < 1024) { // Tablets (md)
+            setValues({ numVisible: 3, numScroll: 1 });
+        } else { // Desktops (lg e acima)
+            setValues({ numVisible: 5, numScroll: 1 });
+        }
+    }, []);
+
+    useEffect(() => {
+        calculateValues();
+        window.addEventListener('resize', calculateValues);
+        return () => window.removeEventListener('resize', calculateValues);
+    }, [calculateValues]);
+
+    return values;
+};
+
 export default function Home() {
 
- type ContentItem = {
+    const { numVisible, numScroll } = useResponsiveValues();
+
+    type ContentItem = {
         name: string;
         image: string;
         type: 'filme' | 'serie';
@@ -25,6 +53,7 @@ export default function Home() {
             description: string,
         }
     };
+
     // Estados para armazenar as listas de cada categoria
     const [emAlta, setEmAlta] = useState<ContentCardProps[]>([]);
     const [assistindoAgora, setAssistindoAgora] = useState <ContentCardProps[]>([]);
@@ -114,13 +143,6 @@ export default function Home() {
         );
     };
 
-    const responsiveOptions = [
-        { breakpoint: '1400px', numVisible: 5, numScroll: 1 },
-        { breakpoint: '1199px', numVisible: 4, numScroll: 1 },
-        { breakpoint: '991px', numVisible: 3, numScroll: 1 },
-        { breakpoint: '767px', numVisible: 2, numScroll: 1 },
-        { breakpoint: '575px', numVisible: 1, numScroll: 1 }
-    ];
     // --- RENDERIZAÇÃO CONDICIONAL ---
     if (loading) {
         return (
@@ -149,11 +171,11 @@ export default function Home() {
         <div className='secao-inferior'>
             <div>
                 <h3>Assistindo agora</h3>
-                <Carousel value={assistindoAgora} numScroll={1} numVisible={3} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+                <CustomCarousel value={assistindoAgora} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
             </div>
             <div>
                <h3>Sem assistir há um tempo</h3>
-                <Carousel value={semAssistirHaUmTempo} numScroll={1} numVisible={4} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+                <CustomCarousel value={semAssistirHaUmTempo} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
             </div>
         </div>            
     </div>

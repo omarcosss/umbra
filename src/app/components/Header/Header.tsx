@@ -80,7 +80,7 @@ const UserButton = () => {
     <button 
       className="user-menu-button"
       onMouseEnter={() => setIconWeight('bold')}
-      onMouseLeave={() => { setIconWeight('regular'); setIsOpen(false); }} 
+      onMouseLeave={() => { setIconWeight('regular'); }} 
       onClick={toggleMenu}
     >
       <UserMenu isOpen={isOpen} />
@@ -158,7 +158,7 @@ const NotificationsButton = () => {
     <button 
       className="notifications-menu-button"
       onMouseEnter={() => setIconWeight('bold')}
-      onMouseLeave={() => { setIconWeight('regular'); setIsOpen(false); }} 
+      onMouseLeave={() => { setIconWeight('regular');  }} 
       onClick={toggleMenu}
     >
       <NotificationsMenu isOpen={isOpen} />

@@ -210,3 +210,50 @@ div.user-review {
     }
 
 }
+
+
+
+.media-stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 40px;
+  justify-content: space-around;
+}
+
+.media-stats-container .media-stat-card {
+  background-color: #1a1a1a;
+  padding: 20px 30px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  border: 1px solid var(--calcario);
+  width: 230px;
+}
+
+.media-stats-container .media-stat-card h3 { /* More specific: h3 inside .media-stat-card */
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.media-stats-container .card-values { /* Renamed 'values' to 'card-values' for clarity */
+  display: flex;
+  justify-content: space-between;
+}
+
+.media-stats-container .card-value-item { /* Renamed 'value' to 'card-value-item' */
+  text-align: center;
+}
+
+.media-stats-container .card-value-item strong { /* Specific to strong inside .card-value-item */
+  font-size: 24px;
+  color: #fff;
+}
+
+.media-stats-container .card-value-item span { /* Specific to span inside .card-value-item */
+  display: block;
+  font-size: 14px;
+  color: #aaa;
+}

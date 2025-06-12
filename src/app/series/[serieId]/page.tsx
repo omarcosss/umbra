@@ -12,7 +12,7 @@ import Button from '@/app/components/Button';
 import { useParams } from 'next/navigation';
 import Breadcrumbs from '@/app/components/Breadcrumbs/Breadcrumbs';
 import EpisodeCard from '@/app/components/EpisodeCard';
-import { Carousel } from 'primereact/carousel';
+import { Carousel } from '@/app/components/Carousel';
 import Comentario, {genericHorrorComments} from '@/app/components/Comentario';
 import CommentInput from '@/app/components/ComponentInput';
 import TabsSection from '@/app/components/TabsSection/TabsSection';
@@ -46,9 +46,8 @@ export default function SerieDetalhe() {
                 <Carousel 
                     value={qntEpisodios} 
                     numScroll={1} 
-                    numVisible={4} 
+                    numVisible={3} 
                     itemTemplate={EpisodeCard}
-                    showIndicators={false}
     
                     // responsiveOptions={responsiveOptions}
                 />

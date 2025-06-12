@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Carousel } from 'primereact/carousel';
+// import { Carousel } from 'primereact/carousel';
+import { Carousel } from '../components/Carousel';
+
 import { ProgressSpinner } from 'primereact/progressspinner';
 
 // Use o mesmo arquivo de estilo
@@ -104,14 +106,6 @@ export default function Filmes() {
             </Link>
         );
     };
-
-    const responsiveOptions = [
-        { breakpoint: '1400px', numVisible: 5, numScroll: 1 },
-        { breakpoint: '1199px', numVisible: 4, numScroll: 1 },
-        { breakpoint: '991px', numVisible: 3, numScroll: 1 },
-        { breakpoint: '767px', numVisible: 2, numScroll: 1 },
-        { breakpoint: '575px', numVisible: 1, numScroll: 1 }
-    ];
     
     if (loading) {
         return (
@@ -133,22 +127,22 @@ export default function Filmes() {
     return (
         <div className='filmes-container'>
             <h3>Filmes Populares</h3>
-            <Carousel value={filmesPopulares} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={filmesPopulares} numScroll={1} numVisible={5} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Clássicos do Terror</h3>
-            <Carousel value={classicos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={classicos} numScroll={1} numVisible={5} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Ícones do Slasher</h3>
-            <Carousel value={iconesSlasher} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={iconesSlasher} numScroll={1} numVisible={5} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Terror Psicológico</h3>
-            <Carousel value={terrorPsicologico} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={terrorPsicologico} numScroll={1} numVisible={5} itemTemplate={contentCard} />
             
             <h3 className="mt-5">Found Footage</h3>
-            <Carousel value={foundFootage} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={foundFootage} numScroll={1} numVisible={5} itemTemplate={contentCard} />
             
             <h3 className="mt-5">Horror Corporal</h3>
-            <Carousel value={horrorCorporal} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={horrorCorporal} numScroll={1} numVisible={5} itemTemplate={contentCard} />
         </div>
     );
 }

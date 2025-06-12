@@ -1,14 +1,41 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Carousel } from 'primereact/carousel';
+import React, { useState, useEffect, useCallback } from 'react';
+// import { Carousel } from 'primereact/carousel';
+import { Carousel } from '../components/Carousel';
 import { ProgressSpinner } from 'primereact/progressspinner';
-
-// Importe o mesmo arquivo de estilo ou crie um novo
 import "./styles.scss"; 
 import Link from 'next/link';
 
+const useResponsiveValues = () => {
+    const [values, setValues] = useState({ numVisible: 5, numScroll: 5 });
+
+    const calculateValues = useCallback(() => {
+        const width = window.innerWidth;
+        if (width < 640) { // Telas pequenas (mobile)
+            setValues({ numVisible: 1, numScroll: 1 });
+        } else if (width < 768) { // Telas um pouco maiores (sm)
+            setValues({ numVisible: 2, numScroll: 1 });
+        } else if (width < 1024) { // Tablets (md)
+            setValues({ numVisible: 3, numScroll: 1 });
+        } else { // Desktops (lg e acima)
+            setValues({ numVisible: 5, numScroll: 1 });
+        }
+    }, []);
+
+    useEffect(() => {
+        calculateValues();
+        window.addEventListener('resize', calculateValues);
+        return () => window.removeEventListener('resize', calculateValues);
+    }, [calculateValues]);
+
+    return values;
+};
+
+
 export default function Series() {
+
+    const { numVisible, numScroll } = useResponsiveValues();
     
     type ContentItem = {
         id: string;
@@ -100,14 +127,6 @@ export default function Series() {
             </Link>
         );
     };
-
-    const responsiveOptions = [
-        { breakpoint: '1400px', numVisible: 5, numScroll: 1 },
-        { breakpoint: '1199px', numVisible: 4, numScroll: 1 },
-        { breakpoint: '991px', numVisible: 3, numScroll: 1 },
-        { breakpoint: '767px', numVisible: 2, numScroll: 1 },
-        { breakpoint: '575px', numVisible: 1, numScroll: 1 }
-    ];
     
     if (loading) {
         return (
@@ -129,22 +148,22 @@ export default function Series() {
     return (
         <div className='series-container'>
             <h3>Séries Populares</h3>
-            <Carousel value={seriesPopulares} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={seriesPopulares} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Sucessos da Netflix</h3>
-            <Carousel value={sucessosNetflix} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={sucessosNetflix} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Mistério e Suspense</h3>
-            <Carousel value={misterioSuspense} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={misterioSuspense} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Antologias de Terror</h3>
-            <Carousel value={antologias} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={antologias} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
             
             <h3 className="mt-5">Aclamadas pela Crítica</h3>
-            <Carousel value={aclamadasPelaCritica} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={aclamadasPelaCritica} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
             
             <h3 className="mt-5">Terror Psicológico</h3>
-            <Carousel value={terrorPsicologico} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={terrorPsicologico} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
         </div>
     );
 }

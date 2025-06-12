@@ -1,11 +1,36 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Carousel } from 'primereact/carousel';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Carousel } from '@/app/components/Carousel';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Para o loading
 import { Knife, Ghost, Gaslight, Scratch, Masks, HauntedHouse, Amulet, Bones } from '../components/CustomIcons/Knife';
 import "./styles.scss";
 import Link from 'next/link';
+
+const useResponsiveValues = () => {
+    const [values, setValues] = useState({ numVisible: 5, numScroll: 5 });
+
+    const calculateValues = useCallback(() => {
+        const width = window.innerWidth;
+        if (width < 640) { // Telas pequenas (mobile)
+            setValues({ numVisible: 1, numScroll: 1 });
+        } else if (width < 768) { // Telas um pouco maiores (sm)
+            setValues({ numVisible: 2, numScroll: 1 });
+        } else if (width < 1024) { // Tablets (md)
+            setValues({ numVisible: 3, numScroll: 1 });
+        } else { // Desktops (lg e acima)
+            setValues({ numVisible: 5, numScroll: 1 });
+        }
+    }, []);
+
+    useEffect(() => {
+        calculateValues();
+        window.addEventListener('resize', calculateValues);
+        return () => window.removeEventListener('resize', calculateValues);
+    }, [calculateValues]);
+
+    return values;
+};
 
 type categoryButtonProps = {
     icon: React.ReactNode,
@@ -21,6 +46,9 @@ const CategoryButton = ({icon, name}: categoryButtonProps) => {
 };
 
 export default function Explorar(){
+
+    const { numVisible, numScroll } = useResponsiveValues();
+
     
     // Tipos para os dados do nosso JSON
     type ContentItem = {
@@ -113,14 +141,6 @@ export default function Explorar(){
         );
     };
 
-    const responsiveOptions = [
-        { breakpoint: '1400px', numVisible: 5, numScroll: 1 },
-        { breakpoint: '1199px', numVisible: 4, numScroll: 1 },
-        { breakpoint: '991px', numVisible: 3, numScroll: 1 },
-        { breakpoint: '767px', numVisible: 2, numScroll: 1 },
-        { breakpoint: '575px', numVisible: 1, numScroll: 1 }
-    ];
-
     // --- RENDERIZAÇÃO CONDICIONAL ---
     if (loading) {
         return (
@@ -157,22 +177,22 @@ export default function Explorar(){
                 <CategoryButton name="Body Horror" icon={<Bones />} />
             </div>
             <h3>Clássicos</h3>
-            <Carousel value={classicos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+            <Carousel value={classicos} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Em Alta</h3>
-            <Carousel value={emAlta} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+            <Carousel value={emAlta} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
             
             <h3 className="mt-5">Ícones do Slasher</h3>
-            <Carousel value={iconesSlasher} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+            <Carousel value={iconesSlasher} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Mistério e Suspense</h3>
-            <Carousel value={misterioSuspense} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+            <Carousel value={misterioSuspense} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Bonecos(as) Assassinos</h3>
-            <Carousel value={bonecosAssassinos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+            <Carousel value={bonecosAssassinos} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
 
             <h3 className="mt-5">Para Você</h3>
-            <Carousel value={paraVoce} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} showIndicators={false} />
+            <Carousel value={paraVoce} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
         </div>
     );
 }

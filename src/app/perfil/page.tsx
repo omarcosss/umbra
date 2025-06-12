@@ -1,12 +1,12 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import TabsSection from "../components/TabsSection/TabsSection";
 import Image from "next/image";
 import "./styles.scss";
 import { UserPlusIcon, ShareNetworkIcon, SkullIcon, ChatIcon } from "@phosphor-icons/react";
-import { Carousel } from "primereact/carousel";
+import { Carousel } from '@/app/components/Carousel';
 import { ProgressSpinner } from "primereact/progressspinner";
 import Link from "next/link";
 import { Rating } from "primereact/rating";
@@ -28,13 +28,31 @@ type ContentCardProps = {
     }
 };
 
-const responsiveOptions = [
-    { breakpoint: '1400px', numVisible: 5, numScroll: 1 },
-    { breakpoint: '1199px', numVisible: 4, numScroll: 1 },
-    { breakpoint: '991px', numVisible: 3, numScroll: 1 },
-    { breakpoint: '767px', numVisible: 2, numScroll: 1 },
-    { breakpoint: '575px', numVisible: 1, numScroll: 1 }
-];
+
+const useResponsiveValues = () => {
+    const [values, setValues] = useState({ numVisible: 5, numScroll: 5 });
+
+    const calculateValues = useCallback(() => {
+        const width = window.innerWidth;
+        if (width < 640) { // Telas pequenas (mobile)
+            setValues({ numVisible: 1, numScroll: 1 });
+        } else if (width < 768) { // Telas um pouco maiores (sm)
+            setValues({ numVisible: 2, numScroll: 1 });
+        } else if (width < 1024) { // Tablets (md)
+            setValues({ numVisible: 3, numScroll: 1 });
+        } else { // Desktops (lg e acima)
+            setValues({ numVisible: 5, numScroll: 1 });
+        }
+    }, []);
+
+    useEffect(() => {
+        calculateValues();
+        window.addEventListener('resize', calculateValues);
+        return () => window.removeEventListener('resize', calculateValues);
+    }, [calculateValues]);
+
+    return values;
+};
 
 const contentCard = (data: ContentCardProps) => {
     const { id, name, image, type } = data.content;
@@ -105,10 +123,63 @@ const ProfilePageHeader = ({user}: { user: User }) => {
 }
 
 const SectionStatistics = ({atividadeRecente}: { atividadeRecente: ContentCardProps[] }) => {
+    const { numVisible, numScroll } = useResponsiveValues();
+
     return(
         <>
+            <div className="media-stats-container">
+                <div className="media-stat-card">
+                <h3>⏱ Tempo vendo filmes</h3>
+                <div className="card-values">
+                    <div className="card-value-item">
+                    <strong>4</strong>
+                    <span>meses</span>
+                    </div>
+                    <div className="card-value-item">
+                    <strong>2</strong>
+                    <span>dias</span>
+                    </div>
+                    <div className="card-value-item">
+                    <strong>1</strong>
+                    <span>hora</span>
+                    </div>
+                </div>
+                </div>
+
+                <div className="media-stat-card">
+                <h3>⏱ Tempo vendo séries</h3>
+                <div className="card-values">
+                    <div className="card-value-item">
+                    <strong>5</strong>
+                    <span>meses</span>
+                    </div>
+                    <div className="card-value-item">
+                    <strong>12</strong>
+                    <span>dias</span>
+                    </div>
+                    <div className="card-value-item">
+                    <strong>8</strong>
+                    <span>horas</span>
+                    </div>
+                </div>
+                </div>
+
+                <div className="media-stat-card">
+                <h3>⏱ Episódios assistidos</h3>
+                <div className="card-values">
+                    <div className="card-value-item">
+                    <strong>5.341</strong>
+                    <span>episódios</span>
+                    </div>
+                    <div className="card-value-item">
+                    <strong>32</strong>
+                    <span>séries</span>
+                    </div>
+                </div>
+                </div>
+            </div>
             <h3>Atividade Recente</h3>
-            <Carousel value={atividadeRecente} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={atividadeRecente} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
         </>
     )
 }
@@ -119,13 +190,14 @@ type SectionListsProps = {
 };
 
 const SectionLists = ({filmesFavoritos, seriesFavoritas}: SectionListsProps) => {
+    const { numVisible, numScroll } = useResponsiveValues();
 
     return(
         <>
             <h3>Filmes Favoritos</h3>
-            <Carousel value={filmesFavoritos} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={filmesFavoritos} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
             <h3>Séries Favoritas</h3>
-            <Carousel value={seriesFavoritas} numScroll={1} numVisible={6} responsiveOptions={responsiveOptions} itemTemplate={contentCard} circular showIndicators={false} />
+            <Carousel value={seriesFavoritas} numScroll={numScroll} numVisible={numVisible} itemTemplate={contentCard} />
         </>
     )
 }
@@ -229,6 +301,7 @@ const UserReview = ({card, reviewData}: UserReviewProps) => {
 }
 
 export default function Perfil(){
+    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
