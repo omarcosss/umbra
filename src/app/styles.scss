@@ -11,15 +11,14 @@
 
 .highlights-slide {
     width: 100%;
-    height: calc(80vh + 200px); /* Ajuste a altura conforme necessário */
-    position: relative; /* Essencial para posicionar os elementos filhos */
+    height: calc(80vh + 200px);
+    position: relative;
     background-color: #000;
     color: white;
-    overflow: hidden; /* Garante que nada saia dos cantos arredondados */
+    overflow: hidden;
 
 }
 
-/* Full bleed */
 .p-carousel:has(.highlights-slide) {
     position: relative;
     margin: -2rem calc(50% - 50vw) 0;
@@ -147,7 +146,6 @@
     color: black;
 }
 
-<<<<<<< HEAD
 .secao-inferior {
     h3 {
     margin-bottom: 1rem;
@@ -236,7 +234,7 @@
 }
 /* 1. Zera o padding interno dos itens do carrossel da biblioteca */
 
-=======
+
 /* Customização opcional das setas do PrimeReact */
 .p-carousel .p-carousel-indicators {
     /* Esconde os pontinhos de navegação, se não quiser */
@@ -291,4 +289,3 @@
         font-size: 0.90rem;
     }
 }
->>>>>>> 2356f62000779cace2c994cb728ec1835c88399f
