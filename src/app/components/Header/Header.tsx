@@ -173,6 +173,7 @@ type LogButtonProps = {
   setShowLogModal: (show: boolean) => void;
 }
 const LogButton = ({ setShowLogModal }: LogButtonProps) => {
+
   const [iconWeight, setIconWeight] = useState<IconWeight>('regular');
   return(
     <button onClick={() => setShowLogModal(true)} className="log-button" onMouseEnter={() => setIconWeight('fill')} onMouseLeave={() => setIconWeight('regular')}>
@@ -194,6 +195,11 @@ export default function Header(){
             <Image src="/logo.png" alt="" width={201.5} height={125} priority={true} />
           </Link>
           <SearchInput />
+          <div className="user-container">
+            <MobileSearchButton searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
+            <NotificationsButton />
+            <UserButton />
+          </div>
         </div>
         <div className="actions-container">
           <nav>
@@ -205,7 +211,6 @@ export default function Header(){
           </nav>
           <LogButton setShowLogModal={setShowLogModal} />
           <div className="user-container">
-            <MobileSearchButton searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
             <NotificationsButton />
             <UserButton />
           </div>
