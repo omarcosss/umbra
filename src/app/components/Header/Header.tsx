@@ -173,6 +173,7 @@ type LogButtonProps = {
   setShowLogModal: (show: boolean) => void;
 }
 const LogButton = ({ setShowLogModal }: LogButtonProps) => {
+
   const [iconWeight, setIconWeight] = useState<IconWeight>('regular');
   return(
     <button onClick={() => setShowLogModal(true)} className="log-button" onMouseEnter={() => setIconWeight('fill')} onMouseLeave={() => setIconWeight('regular')}>
@@ -195,20 +196,19 @@ export default function Header(){
           </Link>
           <SearchInput />
         </div>
+        <div className="user-container">
+          <MobileSearchButton searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
+          <NotificationsButton />
+          <UserButton />
+        </div>
         <div className="actions-container">
           <nav>
             <NavLink href="/" label="Início" isActive={pathname === '/' ? true : false} />
             <NavLink href="/series" label="Séries" isActive={pathname === '/series' ? true : false}/>
             <NavLink href="/filmes" label="Filmes" isActive={pathname === '/filmes' ? true : false}/>
             <NavLink href="/explorar" label="Explorar" isActive={pathname === '/explorar' ? true : false}/>
-            
           </nav>
           <LogButton setShowLogModal={setShowLogModal} />
-          <div className="user-container">
-            <MobileSearchButton searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
-            <NotificationsButton />
-            <UserButton />
-          </div>
         </div>
       </div>
       <Modal

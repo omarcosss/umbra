@@ -34,5 +34,49 @@
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 30px;
         margin: 20px 0;
+        max-width: 100%;
+        overflow-x: scroll;
+    }
+}
+
+@media (max-width: 768px) {
+    .explorar-container{
+        .categories-container {
+            display: flex;
+            justify-content: start;
+            gap: 1rem;
+        }
+
+        .category-button{
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+            text-align: center;
+            padding: unset;
+            height: 100%;
+            min-height: 130px;
+            width: 100%;
+            min-width: 105px;
+
+            align-items: center;
+
+            &:hover{
+                box-shadow: var(--glow);
+                border-color: var(--absinto);
+                z-index: 90;
+            }
+            svg {
+                position: absolute;
+                top: 0.5rem;
+            }
+            span {
+                display: flex;
+                align-items: center;
+                min-height: 60px;
+            }
+        }
     }
 }
