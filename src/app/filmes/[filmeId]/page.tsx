@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Image } from 'primereact/image';
+import NextImage from 'next/image';
 import { Rating } from "primereact/rating";
 import { PlusIcon, SkullIcon, ShareIcon } from '@phosphor-icons/react';
 import Button from '@/app/components/Button';
@@ -108,9 +109,12 @@ export default function FilmeDetalhe() {
                     />
                     <p>{filme.description}</p>
                     <hr />
-                    <div className="serie-details__info__availability">
+                    <div className="filme-details__info__availability">
                         <p>Disponivel em:</p>
-                        <div className="streamings"></div>
+                        <div className="streamings">
+                            <NextImage src="/streaming/globoplay.png" alt="" width={69.27} height={15} priority={false} />
+                            <NextImage src="/streaming/primevideo.png" alt="" width={48.73} height={15} priority={false} />
+                        </div>
                     </div>
                 </div>
                 <div className="filme-details__actions">

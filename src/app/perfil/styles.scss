@@ -95,6 +95,9 @@ div.user-review {
     justify-content: start;
     width: 100%;
     gap: 1rem;
+    border-radius: 8px;
+
+    transition: background-color 0.2s ease;
 
     .mb-4 {
         margin-bottom: unset;
@@ -115,6 +118,7 @@ div.user-review {
         display: flex;
         justify-content: end;
         gap: 0.5rem;
+        color: #666;
     }
 
     .review-interactions {
@@ -122,11 +126,16 @@ div.user-review {
         gap: 1.5rem;
         height: 100%;
         align-items: end;
+        color: #666;
 
         span {
             display: flex;
             gap: 0.5rem
         }
+    }
+
+    &:hover {
+        background-color: rgba(65, 58, 58, 0.466); 
     }
 }
 

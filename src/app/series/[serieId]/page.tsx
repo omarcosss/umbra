@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Image } from 'primereact/image';
+import NextImage from 'next/image';
 import './styles.scss';
 import { Rating } from "primereact/rating";
 import { PlusIcon, SkullIcon, ShareIcon } from '@phosphor-icons/react';
@@ -140,7 +141,10 @@ export default function SerieDetalhe() {
                     <hr />
                     <div className="serie-details__info__availability">
                         <p>Disponivel em:</p>
-                        <div className="streamings"></div>
+                        <div className="streamings">
+                            <NextImage src="/streaming/globoplay.png" alt="" width={69.27} height={15} priority={false} />
+                            <NextImage src="/streaming/primevideo.png" alt="" width={48.73} height={15} priority={false} />
+                        </div>
                     </div>
                 </div>
                 <div className="serie-details__actions">
