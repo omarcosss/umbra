@@ -75,9 +75,11 @@
     "castle-rock": { "name": "Castle Rock", "type": "serie", "image": "https://artworks.thetvdb.com/banners/v4/series/331600/posters/604be7de8ded8.jpg", "description": "Baseada no universo de Stephen King, a série entrelaça personagens e temas de suas obras mais icônicas na cidade fictícia de Castle Rock, Maine, explorando a escuridão que se esconde sob a superfície." }
   },
   "categorias": {
-    "classicos": [ "o-exorcista", "psicose", "o-iluminado", "o-enigma-de-outro-mundo", "o-silencio-dos-inocentes", "sexta-feira-13", "a-hora-do-pesadelo", "a-bruxa-de-blair", "o-sexto-sentido", "alem-da-imaginacao", "arquivo-x", "twin-peaks" ],
-    "emAlta": [ "fale-comigo", "sorria", "noites-brutais", "the-last-of-us", "stranger-things", "m3gan", "pearl", "terrifier-2", "imaculada", "quando-o-mal-espreita", "origem", "yellowjackets", "lovecraft-country", "archive-81" ],
-    "paraVoce": [ "midsommar", "o-babadook", "corrente-do-mal", "deixa-ela-entrar", "a-autopsia", "o-segredo-da-cabana", "a-queda-da-casa-de-usher", "o-menu", "servant", "castle-rock", "penny-dreadful" ],
+    "assistindoAgora" : [ "re-zero","stranger-things","the-promised-neverland","the-last-of-us"],
+    "semAssistirHaUmTempo":["american-horror-story","hannibal","the-walking-dead","black-mirror","servant","yellowjackets","bates-motel","alem-da-imaginacao"],
+    "classicos": [ "o-exorcista", "psicose", "o-iluminado", "o-enigma-de-outro-mundo", "o-silencio-dos-inocentes", "sexta-feira-13", "a-hora-do-pesadelo", "a-bruxa-de-blair", "o-sexto-sentido", "alem-da-imaginacao" ],
+    "emAlta": [ "fale-comigo", "sorria", "noites-brutais", "the-last-of-us", "stranger-things", "m3gan", "pearl", "terrifier-2", "imaculada", "quando-o-mal-espreita", "origem", "yellowjackets" ],
+    "paraVoce": [ "midsommar", "o-babadook", "corrente-do-mal", "deixa-ela-entrar", "a-autopsia", "o-segredo-da-cabana", "a-queda-da-casa-de-usher", "o-menu", "servant" ],
     "bonecosAssassinos": [ "brinquedo-assassino", "annabelle", "m3gan", "chucky-serie", "annabelle-2", "gritos-mortais", "o-boneco-do-mal", "a-noiva-de-chucky" ],
     "foundFootage": [ "a-bruxa-de-blair", "atividade-paranormal", "rec", "archive-81" ],
     "iconesSlasher": [ "panico", "sexta-feira-13", "a-hora-do-pesadelo", "brinquedo-assassino", "x-a-marca-da-morte", "pearl", "terrifier-2", "hannibal", "bates-motel", "scream-serie", "slasher-serie" ],
